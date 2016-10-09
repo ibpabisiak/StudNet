@@ -13,5 +13,10 @@ namespace Studnet.Controllers.Main
         {
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register new user</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="user_name">Imię:</label>
+        <input type="text" name="user_name" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_surname">Nazwisko:</label>
+        <input type="text" name="user_surname" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_address_city">Miasto:</label>
+        <input type="text" name="user_address_city" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_address_street">Ulica:</label>
+        <input type="text" name="user_address_street" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_address_street_number">Numer posesji:</label>
+        <input type="text" name="user_address_street_number" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_address_home_number">Numer lokalu:</label>
+        <input type="text" name="user_address_home_number" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_index_number">Numer indeksu:</label>
+        <input type="number" name="user_index_number" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_study_year">Rok studiów:</label>
+        <input type="number" name="user_study_number" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_semester">Semestr:</label>
+        <input type="number" name="user_semester" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="user_password">Hasło:</label>
+        <input type="password" name="user_password" class="form-control"/>
+    </div>
+    <input type="checkbox" name="user_mail_check" hidden/>
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Zarejestruj"/>
+    </div>
+</form>
