@@ -22,6 +22,8 @@ namespace Studnet.Controllers.User
         [HttpPost]
         public ActionResult Register(Models.User user)
         {
+            AppData.Instance().studnetDatabase.users.Add(user);
+            AppData.Instance().studnetDatabase.SaveChanges();
             return View();
         }
     }

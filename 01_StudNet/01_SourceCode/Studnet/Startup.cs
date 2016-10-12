@@ -8,7 +8,7 @@ namespace Studnet
     {
         public void Configuration(IAppBuilder app)
         {
-
+            AppData.Instance();
         }
     }
 }
