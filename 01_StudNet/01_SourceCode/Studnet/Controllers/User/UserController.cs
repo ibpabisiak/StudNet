@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -44,14 +45,32 @@ namespace Studnet.Controllers.User
             smtpClient.Host = "msnowak.webd.pl";
             smtpClient.Credentials = new NetworkCredential("studnet@msnowak.webd.pl", "studnet");
             smtpClient.Send(mail);
-            return View();
+            return View("PostRegister");
         }
 
+        /// <summary>
+        /// Na podstawie podanego adresu e-mail sprawdza zawartosc bazy pod katem jego istnienia.
+        /// W przypadku znalezienia adresu, ustawia wlasciwosc user_mail_check na true
+        /// </summary>
+        /// <param name="userMail">Adres e-mail do weryfikacji.</param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult VerifyMail(string userMail)
         {
-            //tutaj będzie weryfikacja adresu email
-            string returnMsg = "e-mail " + userMail + " został zweryfikowany";
+            var userFind =
+                AppData.Instance().studnetDatabase.users.FirstOrDefault(w => w.user_mail == userMail);
+            string returnMsg = "";
+            if (userFind != null)
+            {
+                userFind.user_mail_check = true;
+                AppData.Instance().studnetDatabase.SaveChanges();
+                returnMsg = "e-mail " + userFind.user_mail + " został zweryfikowany";
+            }
+            else
+            {
+                returnMsg = "Konto z takim adresem e-mail nie istnieje w bazie";
+            }
+            
             ViewBag.Message = returnMsg;
             return View();
         }
