@@ -1,4 +1,5 @@
-﻿
+﻿@model Studnet.Models.User
+
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,6 +17,10 @@
         <input type="text" name="user_surname" class="form-control"/>
     </div>
     <div class="form-group">
+        <label for="user_mail">Adres email:</label>
+        <input type="email" name="user_mail" class="form-control" />
+    </div>
+    <div class="form-group">
         <label for="user_address_city">Miasto:</label>
         <input type="text" name="user_address_city" class="form-control"/>
     </div>
@@ -24,20 +29,16 @@
         <input type="text" name="user_address_street" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="user_address_street_number">Numer posesji:</label>
-        <input type="text" name="user_address_street_number" class="form-control"/>
-    </div>
-    <div class="form-group">
         <label for="user_address_home_number">Numer lokalu:</label>
         <input type="text" name="user_address_home_number" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="user_index_number">Numer indeksu:</label>
-        <input type="number" name="user_index_number" class="form-control"/>
+        <label for="user_index">Numer indeksu:</label>
+        <input type="number" name="user_index" class="form-control"/>
     </div>
     <div class="form-group">
         <label for="user_study_year">Rok studiów:</label>
-        <input type="number" name="user_study_number" class="form-control"/>
+        <input type="number" name="user_study_year" class="form-control"/>
     </div>
     <div class="form-group">
         <label for="user_semester">Semestr:</label>
