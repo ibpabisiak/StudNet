@@ -82,5 +82,11 @@ namespace Studnet.Controllers.User
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Login(string user_mail, string user_password)
+        {
+
+            return RedirectToAction("Index","MainPage");
+        }
     }
 }
