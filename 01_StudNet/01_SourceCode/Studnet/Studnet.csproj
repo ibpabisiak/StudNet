@@ -214,6 +214,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\PostRegister.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <None Include="Views\User\VerifyMail.cshtml" />
   </ItemGroup>
   <ItemGroup />
