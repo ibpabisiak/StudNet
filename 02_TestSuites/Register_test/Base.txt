@@ -1,0 +1,9 @@
+10 7
+name=user_name name=user_surname name=user_address_city name=user_address_street name=user_address_street_number name=user_address_home_number name=user_index_number name=user_study_number name=user_semester name=user_password
+pysio zysio Szczecin Piostow 67 54 123456 6 6 thxwstp
+mysio zysio POznan Piostow 68 54 123456 6 6 thxwstp
+kisio zysio Wroclaw Piostow 69 54 123456 6 6 thxwstp
+wysio zysio Krakow Piostow 70 54 123456 6 6 thxwstp
+rysio zysio Banie Piostow 61 54 123456 6 6 thxwstp
+liso zysio Plock Piostow 62 54 123456 6 6 thxwstp
+pysio zysio KIelce Piostow 63 54 123456 6 6 thxwstp
