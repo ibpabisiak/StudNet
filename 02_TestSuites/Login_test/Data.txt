@@ -1,0 +1,7 @@
+2 5
+name=user_mail name=user_password
+test@onet.eu 123456789
+waldek@gmail.com 987654321
+zenekcom.eu poiuygtr
+waldek@interia.eu jojojo
+waldek@i2nteria.eu jojojo2
