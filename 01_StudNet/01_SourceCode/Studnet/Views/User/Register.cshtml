@@ -1,52 +1,81 @@
 ﻿@model Studnet.Models.User
 
 @{
+    String name = "";
+    String mail = "";
+    String surname = "";
+    String city = "";
+    String street = "";
+    String home_number = "";
+    int index = 0;
+    int year = 0;
+    int semester = 0;
+
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Model != null)
+    {
+        name = Model.user_name;
+        mail = Model.user_mail;
+        surname = Model.user_surname;
+        city = Model.user_address_city;
+        street = Model.user_address_street;
+        home_number = Model.user_address_home_number;
+        index = Model.user_index;
+        year = Model.user_study_year;
+        semester = Model.user_semester;
+    }
 }
 
 <h2>Register new user</h2>
 
 <form method="post" id="reg">
+    @{ 
+        if (ViewBag.Error != null)
+        {
+            <font color="red"><b>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje</b></font>
+        }
+    }
     <div class="form-group">
         <label for="user_name">Imię:</label>
-        <input type="text" name="user_name" class="form-control" onblur="return testname(this)"/>
+        <input type="text" name="user_name" value="@name" class="form-control" onblur="return testname(this)"/>
     </div>
     <div class="form-group">
         <label for="user_surname">Nazwisko:</label>
-        <input type="text" name="user_surname" class="form-control"  onblur="return test_surname(this)" />
+        <input type="text" name="user_surname" value="@surname" class="form-control"  onblur="return test_surname(this)" />
     </div>
     <div class="form-group">
         <label for="user_mail">Adres email:</label>
-        <input type="email" name="user_mail" class="form-control" onblur="return validEmail(this)"/>
+        <input type="email" name="user_mail" class="form-control" value="@mail" onblur="return validEmail(this)"/>
     </div>
     <div class="form-group">
         <label for="user_address_city">Miasto:</label>
-        <input type="text" name="user_address_city" class="form-control"  onblur="return testuser_address_city(this)" />
+        <input type="text" name="user_address_city" class="form-control" value="@city" onblur="return testuser_address_city(this)" />
     </div>
     <div class="form-group">
         <label for="user_address_street">Ulica:</label>
-        <input type="text" name="user_address_street" class="form-control"  onblur="return testuser_address_street(this)" />
+        <input type="text" name="user_address_street" class="form-control" value="@street" onblur="return testuser_address_street(this)" />
     </div>
     <div class="form-group">
         <label for="user_address_home_number">Numer lokalu:</label>
-        <input type="text" name="user_address_home_number" class="form-control" onblur="return testuser_address_home_number(this)" />
+        <input type="text" name="user_address_home_number" class="form-control" value="@home_number" onblur="return testuser_address_home_number(this)" />
     </div>
     <div class="form-group">
         <label for="user_index">Numer indeksu:</label>
-        <input type="number" name="user_index" class="form-control" onblur="return testuser_index(this)"/>
+        <input type="number" name="user_index" class="form-control" value="@index" onblur="return testuser_index(this)"/>
     </div>
     <div class="form-group">
         <label for="user_study_year">Rok studiów:</label>
-        <input type="number" name="user_study_year" class="form-control" onblur="return testuser_study_year(this)"/>
+        <input type="number" name="user_study_year" class="form-control" value="@year" onblur="return testuser_study_year(this)"/>
     </div>
     <div class="form-group">
         <label for="user_semester">Semestr:</label>
-        <input type="number" name="user_semester" class="form-control" onblur="return testuser_semester(this)" />
+        <input type="number" name="user_semester" class="form-control" value="@semester" onblur="return testuser_semester(this)" />
     </div>
     <div class="form-group">
         <label for="user_password">Hasło:</label>
-        <input type="password" name="user_password" class="form-control" onblur="return testuser_password(this)"/>
+        <input type="password" name="user_password" class="form-control"/>
     </div>
     <input type="checkbox" name="user_mail_check" hidden />
     <div class="form-group">

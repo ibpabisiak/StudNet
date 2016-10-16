@@ -8,7 +8,8 @@ namespace Studnet.Models
 
     public partial class User
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Column(TypeName = "text")]
@@ -46,5 +47,10 @@ namespace Studnet.Models
         [Column(TypeName = "text")]
         [Required]
         public string user_password { get; set; }
+
+        public string GetFullName()
+        {
+            return user_name + " " + user_surname;
+        }
     }
 }

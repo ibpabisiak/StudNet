@@ -22,9 +22,21 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "MainPage")</li>
-                    <li>@Html.ActionLink("Rejestracja", "Register", "User")</li>
-                    <li>@Html.ActionLink("Logowanie", "Login", "User")</li>
+                    @{
+                        if (!(bool)Session["IsLogged"])
+                        {
+                            <li>@Html.ActionLink("Rejestracja", "Register", "User")</li>
+                            <li>@Html.ActionLink("Logowanie", "Login", "User")</li>
+                        }
+                    }         
                 </ul>
+                @{
+                    if ((bool)Session["IsLogged"])
+                    {
+                        <div align="right" style="margin-top: 15px;"><font size="3" color="gray">Zalogowany jako <b>@Session["Username"]</b></font>
+                        <span style="margin-left:2em"><font color="gray">@Html.ActionLink("Wyloguj", "Logout", "User")</font></span></div>
+                    }
+                }
             </div>
         </div>
     </div>

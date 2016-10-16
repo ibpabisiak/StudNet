@@ -7,6 +7,12 @@
 <h2>Logowanie</h2>
 
 <form method="post">
+    @{ 
+        if(ViewBag.Error != null)
+        {
+            <font color="red"><b>@ViewBag.Error</b></font>
+        }
+    }
     <div class="form-group">
         <label for="user_mail">E-Mail:</label>
         <input type="text" name="user_mail" class="form-control"/>

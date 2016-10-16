@@ -7,6 +7,8 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Studnet.Models;
+using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Studnet.Controllers.User
 {
@@ -26,28 +28,35 @@ namespace Studnet.Controllers.User
         [HttpPost]
         public ActionResult Register(Models.User user)
         {
+            try
+            {
+                AppData.Instance().studnetDatabase.AddUser(user);
 
-            AppData.Instance().studnetDatabase.users.Add(user);
-            AppData.Instance().studnetDatabase.SaveChanges();
+                // send verification mail
 
-            // send verification mail
-
-            UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
-            string url = "http://" + Request.Url.Host + urlHelper.Action("VerifyMail", "User", new {mail = Server.HtmlDecode(user.user_mail) });
-            MailMessage mail = new MailMessage("studnet@msnowak.webd.pl", user.user_mail);
-            mail.Subject = "Weryfikacja adresu email";
-            mail.Body = "Witamy,<br>" +
-                        "Aby zweryfikować adres e-mail wejdź pod adres <a href=\"http://address.com"+url+"\">KLIK</a>" + 
-                        "<br>Pozdrawiamy,<br>"+
-                        "Zespół StudNet";
-            SmtpClient smtpClient = new SmtpClient();
-            smtpClient.Port = 25;
-            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Host = "msnowak.webd.pl";
-            smtpClient.Credentials = new NetworkCredential("studnet@msnowak.webd.pl", "studnet");
-            smtpClient.Send(mail);
-            return View("PostRegister");
+                UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
+                string url = Request.Url.Host + ":" + Request.Url.Port + urlHelper.Action("VerifyMail", "User", new { userMail = Server.HtmlDecode(user.user_mail) });
+                MailMessage mail = new MailMessage("studnet@msnowak.webd.pl", user.user_mail);
+                mail.Subject = "Weryfikacja adresu email";
+                mail.Body = "Witamy, \n" +
+                            "Aby zweryfikować adres e-mail wejdź pod adres \n" +
+                            url + "\nPozdrawiamy,\n" +
+                            "Zespół StudNet";
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Port = 25;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Host = "msnowak.webd.pl";
+                smtpClient.Credentials = new NetworkCredential("studnet@msnowak.webd.pl", "studnet");
+                smtpClient.Send(mail);
+                return View("PostRegister");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ViewBag.Error = ex.Message;
+                return View(user);
+            }
         }
 
         /// <summary>
@@ -66,7 +75,7 @@ namespace Studnet.Controllers.User
             {
                 userFind.user_mail_check = true;
                 AppData.Instance().studnetDatabase.SaveChanges();
-                returnMsg = "e-mail " + userFind.user_mail + " został zweryfikowany";
+                returnMsg = "Adres e-mail " + userFind.user_mail + " został zweryfikowany";
             }
             else
             {
@@ -77,16 +86,58 @@ namespace Studnet.Controllers.User
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "MainPage");
+        }
+
+        [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            if ((String)Session["user"] != null)
+            {
+                Session.Abandon();
+                return RedirectToAction("Index", "MainPage");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]
         public ActionResult Login(string user_mail, string user_password)
         {
-
-            return RedirectToAction("Index","MainPage");
+            try
+            {
+                AppData.Instance().LogonUser(user_mail, user_password);
+                var loggedUser = AppData.Instance().studnetDatabase.users.FirstOrDefault(m => m.user_mail == user_mail);
+                Session["IsLogged"] = true;
+                Session.Add("User", loggedUser.user_mail);
+                Session.Add("Username", loggedUser.user_name + " " + loggedUser.user_surname);
+                return RedirectToAction("Index", "MainPage");
+            }
+            catch (Exception ex)
+            {
+                switch(ex.Message.ToLower())
+                {
+                    case "invalid email":
+                        ViewBag.Error = "Podany adres email nie znajduje się w bazie";
+                        break;
+                    case "invalid password":
+                        ViewBag.Error = "Podane hasło jest nieprawidłowe";
+                        break;
+                    case "user not activated":
+                        ViewBag.Error = "Konto nie zostało aktywowane. Sprawdź swoją skrzynkę pocztową i wejdź w link aktywacyjny";
+                        break;
+                    default:
+                        ViewBag.Error = "Wystąpił błąd. Spróbuj ponownie";
+                        break;
+                }
+                return View();
+            }
         }
     }
 }

@@ -20,8 +20,53 @@ namespace Studnet.Models
         /// <param name="user">Validated user to add</param>
         public void AddUser(User user)
         {
-            users.Add(user);
-            SaveChanges();
+            try
+            {
+                if (users.FirstOrDefault(m => m.user_mail == user.user_mail) != null)
+                {
+                    throw new Exception("User already exists in database");
+                }
+                else
+                {
+                    users.Add(user);
+                    SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public User AuthorizeUser(string mail, string password)
+        {
+            var user = users.FirstOrDefault(m => m.user_mail == mail);
+
+            if(user == null)
+            {
+                throw new Exception("Invalid email");
+            }
+            else if(user.user_password != password)
+            {
+                throw new Exception("Invalid password");
+            }
+            else if(!user.user_mail_check)
+            {
+                throw new Exception("User not activated");
+            }
+
+            return user;
+        }
+
+        public bool CheckIfUserExists(User user)
+        {
+            bool ifUserExists = false;
+
+            if (users.FirstOrDefault(m => m.user_mail == user.user_mail) != null)
+            {
+                ifUserExists = true;
+            }
+            return ifUserExists;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

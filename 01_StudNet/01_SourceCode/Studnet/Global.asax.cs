@@ -17,5 +17,16 @@ namespace Studnet
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        public void Session_OnStart()
+        {
+            Session["IsLogged"] = false;
+        }
+
+        public void Session_OnEnd()
+        {
+            Session.Clear();
+            Session["IsLogged"] = false;
+        }
     }
 }
