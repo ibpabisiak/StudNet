@@ -14,22 +14,28 @@ namespace Studnet
         private static AppData instance;
 
         //App data
-        public StudnetDatabase studnetDatabase { get; set; }
-        public List<User> logedUsers { get; private set; }
+        public StudnetDatabase StudnetDatabase { get; private set; }
+        public List<User> LogedUsers { get; private set; }
 
         private AppData()
         {
-            logedUsers = new List<User>();
-            studnetDatabase = new StudnetDatabase();
+            LogedUsers = new List<User>();
+            StudnetDatabase = new StudnetDatabase();
         }
 
+        /// <summary>
+        /// Method which logs in user
+        /// </summary>
+        /// <param name="user_mail">User mail</param>
+        /// <param name="user_password">User password</param>
         public void LogonUser(string user_mail, string user_password)
         {
             User user = null;
             try
             {
-                user = studnetDatabase.AuthorizeUser(user_mail, user_password);
-                logedUsers.Add(user);
+                user = StudnetDatabase.UserManagement
+                    .AuthorizeUser(user_mail, user_password);
+                LogedUsers.Add(user);
             }
             catch(Exception ex)
             {

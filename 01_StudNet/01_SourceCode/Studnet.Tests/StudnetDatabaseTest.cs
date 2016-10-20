@@ -10,7 +10,8 @@ namespace Studnet.Tests.Controllers
         [TestMethod]
         public void AuthorizeUserShouldReturnTrueWhenLoggingAsAdmin()
         {
-            User result = AppData.Instance().studnetDatabase.AuthorizeUser("studnet@msnowak.webd.pl", "admin");
+            User result = AppData.Instance().StudnetDatabase
+                .UserManagement.AuthorizeUser("studnet@msnowak.webd.pl", "admin");
             Assert.AreNotSame(null, result);
         }
 
@@ -20,7 +21,8 @@ namespace Studnet.Tests.Controllers
             User result;
             try
             {
-                result = AppData.Instance().studnetDatabase.AuthorizeUser("Sum", "Wrong");
+                result = AppData.Instance().StudnetDatabase
+                    .UserManagement.AuthorizeUser("Sum", "Wrong");
             }
             catch(Exception ex)
             {
@@ -35,7 +37,8 @@ namespace Studnet.Tests.Controllers
             User user = new User();
             user.user_name = "Admin";
             user.user_mail = "studnet@msnowak.webd.pl";
-            bool result = AppData.Instance().studnetDatabase.CheckIfUserExists(user);
+            bool result = AppData.Instance().StudnetDatabase
+                .UserManagement.CheckIfUserExists(user);
             Assert.IsTrue(result);
         }
 
@@ -45,7 +48,8 @@ namespace Studnet.Tests.Controllers
             User user = new User();
             user.user_name = "SumWrong";
             user.user_mail = "SumWrongMail";
-            bool result = AppData.Instance().studnetDatabase.CheckIfUserExists(user);
+            bool result = AppData.Instance().StudnetDatabase
+                .UserManagement.CheckIfUserExists(user);
             Assert.IsFalse(result);
         }
     }

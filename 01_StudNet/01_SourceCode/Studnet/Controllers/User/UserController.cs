@@ -9,11 +9,13 @@ using System.Web.Mvc;
 using Studnet.Models;
 using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography;
 
 namespace Studnet.Controllers.User
 {
     public class UserController : Controller
     {
+
         // GET: User
         public ActionResult Index()
         {
@@ -25,12 +27,18 @@ namespace Studnet.Controllers.User
             return View();
         }
 
+        /// <summary>
+        /// Method which registeres user based on data given by user
+        /// </summary>
+        /// <param name="user">User object created from data posted from form</param>
+        /// <returns>Action based on result of adding</returns>
         [HttpPost]
         public ActionResult Register(Models.User user)
         {
             try
             {
-                AppData.Instance().studnetDatabase.AddUser(user);
+                AppData.Instance().StudnetDatabase
+                    .UserManagement.AddUser(user);
 
                 // send verification mail
 
@@ -69,12 +77,12 @@ namespace Studnet.Controllers.User
         public ActionResult VerifyMail(string userMail)
         {
             var userFind =
-                AppData.Instance().studnetDatabase.users.FirstOrDefault(w => w.user_mail == userMail);
+                AppData.Instance().StudnetDatabase.Users.FirstOrDefault(w => w.user_mail == userMail);
             string returnMsg = "";
             if (userFind != null)
             {
                 userFind.user_mail_check = true;
-                AppData.Instance().studnetDatabase.SaveChanges();
+                AppData.Instance().StudnetDatabase.SaveChanges();
                 returnMsg = "Adres e-mail " + userFind.user_mail + " został zweryfikowany";
             }
             else
@@ -113,7 +121,7 @@ namespace Studnet.Controllers.User
             try
             {
                 AppData.Instance().LogonUser(user_mail, user_password);
-                var loggedUser = AppData.Instance().studnetDatabase.users.FirstOrDefault(m => m.user_mail == user_mail);
+                var loggedUser = AppData.Instance().StudnetDatabase.Users.FirstOrDefault(m => m.user_mail == user_mail);
                 Session["IsLogged"] = true;
                 Session.Add("User", loggedUser.user_mail);
                 Session.Add("Username", loggedUser.user_name + " " + loggedUser.user_surname);
