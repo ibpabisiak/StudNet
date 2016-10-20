@@ -33,8 +33,16 @@
                 @{
                     if ((bool)Session["IsLogged"])
                     {
-                        <div align="right" style="margin-top: 15px;"><font size="3" color="gray">Zalogowany jako <b>@Session["Username"]</b></font>
-                        <span style="margin-left:2em"><font color="gray">@Html.ActionLink("Wyloguj", "Logout", "User")</font></span></div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="False">@Session["Username"]<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Zmień hasło","ChangePassword","User")</li>
+                                    <li>@Html.ActionLink("Wyloguj", "Logout", "User")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
                     }
                 }
             </div>
@@ -44,7 +52,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - StudNet</p>
+            <p>&copy; @DateTime.Now.Year - StudNet | @Html.ActionLink("O serwisie","About","MainPage")</p>
         </footer>
     </div>
 

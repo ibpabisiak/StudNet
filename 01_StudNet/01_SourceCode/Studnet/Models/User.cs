@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace Studnet.Models
 {
     using System;
@@ -51,6 +53,20 @@ namespace Studnet.Models
         public string GetFullName()
         {
             return user_name + " " + user_surname;
+        }
+
+        public static bool validatePassword(string _passwd)
+        {
+            Regex passwordRegex = new Regex(@"(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d[$@$!%*?&ê¹œ¿Ÿæñ³óÊ¥Œ¯ÆÑ£Ó]{8,32}");
+            Match regexMath = passwordRegex.Match(_passwd);
+            if (regexMath.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

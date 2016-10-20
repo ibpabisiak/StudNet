@@ -147,5 +147,57 @@ namespace Studnet.Controllers.User
                 return View();
             }
         }
+
+        public ActionResult ChangePassword()
+        {
+            if (Session["isLogged"] == null)
+                RedirectToAction("Index", "MainPage");
+            ViewBag.Success = false;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(string oldPassword, string newPassword, string newPasswordRepeat)
+        {
+            if (Session["isLogged"] == null)
+                RedirectToAction("Index", "MainPage");
+
+            if (!newPassword.Equals(newPasswordRepeat))
+            {
+                ViewBag.Error = "Nowe hasła nie zgadzają się ze sobą";
+                ViewBag.Success = false;
+                return View();
+            }
+
+            if (!Models.User.validatePassword(newPassword))
+            {
+                 ViewBag.Error =
+                    "Nowe hasło nie spełnia kryteriów bezpieczeństwa (8-32 znaki, małe litery, duże litery i cyfry lub znaki specjalne";
+                ViewBag.Success = false;
+                return View();
+            }
+               
+            try
+            {
+                AppData.Instance()
+                    .StudnetDatabase.UserManagement.ChangePassword(Session["User"].ToString(), newPassword, oldPassword);
+                ViewBag.Success = true;
+            }
+            catch (Exception e)
+            {
+                switch (e.Message.ToLower())
+                {
+                    case "invalid email":
+                        ViewBag.Error = "Błędny adres E-Mail użytkownika";
+                        break;
+                    case "invalid password":
+                        ViewBag.Error = "Podano błędne obecne hasło użytkownika";
+                        break;
+                }
+                ViewBag.Success = false;
+            }
+
+            return View();
+        }
     }
 }

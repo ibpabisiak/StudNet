@@ -84,5 +84,19 @@ namespace Studnet
             }
             return ifUserExists;
         }
+
+        public void ChangePassword(string _email, string _newPasswd, string _oldPassword)
+        {
+            var user = users.FirstOrDefault(m => m.user_mail == _email);
+            _newPasswd = passwordHasher.HashPassword(_newPasswd);
+            _oldPassword = passwordHasher.HashPassword(_oldPassword);
+            if(user == null)
+                throw new Exception("invalid email");
+            else if(!user.user_password.Equals(_oldPassword))
+                throw new Exception("invalid password");
+            user.user_password = _newPasswd;
+            AppData.Instance().StudnetDatabase.SaveChanges();
+
+        }
     }
 }
