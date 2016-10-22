@@ -220,6 +220,9 @@
     <Content Include="Views\User\PostRegister.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\ForgotPassword.cshtml" />
+    <Content Include="Views\User\PostForgotPassword.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
     <None Include="Views\User\VerifyMail.cshtml" />
   </ItemGroup>
   <ItemGroup />

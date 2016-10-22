@@ -12,8 +12,9 @@ namespace Studnet
     {
         private MD5CryptoServiceProvider hasher = new MD5CryptoServiceProvider();
         private ASCIIEncoding asciiEncoding = new ASCIIEncoding();
+        private const int caesarMoveVal = 9;
 
-        public string HashPassword(string password)
+        public string HashPasswordMD5(string password)
         {
             string hashedPassword = "";
 
@@ -30,6 +31,45 @@ namespace Studnet
             }
 
             return hashedPassword;
+        }
+
+        public string HashPasswordCaesar(string password)
+        {
+            string hashedPassword = "";
+
+            try
+            {
+                foreach (var item in Encoding.ASCII.GetBytes(password))
+                {
+                    hashedPassword += Convert.ToChar(item + caesarMoveVal);
+                }
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+                hashedPassword = "";
+            }
+            return hashedPassword;
+        }
+
+        public string UnhashPasswordCaesar(string password)
+        {
+            string unhashedPassword = "";
+
+            try
+            {
+                foreach (var item in Encoding.ASCII.GetBytes(password))
+                {
+                    unhashedPassword += Convert.ToChar(item - caesarMoveVal);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                unhashedPassword = "";
+            }
+
+            return unhashedPassword;
         }
     }
 }

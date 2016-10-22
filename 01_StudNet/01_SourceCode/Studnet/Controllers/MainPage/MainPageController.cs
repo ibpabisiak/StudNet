@@ -11,6 +11,7 @@ namespace Studnet.Controllers.Main
         // GET: Main
         public ActionResult Index()
         {
+            AppData.Instance().WebsiteAdress = Request.Url.Host + ":" + Request.Url.Port;
             return View();
         }
 

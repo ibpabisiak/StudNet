@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Studnet
 {
@@ -31,7 +34,7 @@ namespace Studnet
                 }
                 else
                 {
-                    user.user_password = passwordHasher.HashPassword(user.user_password);
+                    user.user_password = passwordHasher.HashPasswordMD5(user.user_password);
                     AppData.Instance().StudnetDatabase.AddRecordToTable(StudnetDatabase.TableType.Users, user);
                 }
             }
@@ -51,7 +54,7 @@ namespace Studnet
         public User AuthorizeUser(string mail, string password)
         {
             var user = users.FirstOrDefault(m => m.user_mail == mail);
-            password = passwordHasher.HashPassword(password);
+            password = passwordHasher.HashPasswordMD5(password);
 
             if (user == null)
             {
@@ -85,18 +88,71 @@ namespace Studnet
             return ifUserExists;
         }
 
+        public void CreatePasswordResetRequest(string user_mail, string actionAdress)
+        {
+            SendEmailToUser(user_mail, "Resetowanie hasła", "Witaj, \n" +
+                "Otrzymaliśmy polecenie zresetowania Twojego hasła. Jeśli chcesz zresetować hasło, wejdź w link podany poniżej. \n" +
+                actionAdress + "\n Jeśli to polecenie nie pochodzi od Ciebie, zignoruj tą wiadomośc. \n Pozdrawiamy, \n Zespół StudNet");
+        }
+
+        public void SendEmailToUser(string user_mail, string title, string body)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage("studnet@msnowak.webd.pl", user_mail);
+                mail.Subject = title;
+                mail.Body = body;
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Port = 25;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Host = "msnowak.webd.pl";
+                smtpClient.Credentials = new NetworkCredential("studnet@msnowak.webd.pl", "studnet");
+                smtpClient.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Method which checks if user exists in database
+        /// </summary>
+        /// <param name="user_mail">User's mail</param>
+        /// <returns>True if user exists in database</returns>
+        public bool CheckIfUserExists(string user_mail)
+        {
+            bool ifUserExists = false;
+
+            if (users.FirstOrDefault(m => m.user_mail == user_mail) != null)
+            {
+                ifUserExists = true;
+            }
+            return ifUserExists;
+        }
+
+        public void ChangePassword(string _email, string _newPasswd)
+        {
+            var user = users.FirstOrDefault(m => m.user_mail == _email);
+            _newPasswd = passwordHasher.HashPasswordMD5(_newPasswd);
+            if (user == null)
+                throw new Exception("invalid email");
+            user.user_password = _newPasswd;
+            AppData.Instance().StudnetDatabase.SaveChanges();
+        }
+
         public void ChangePassword(string _email, string _newPasswd, string _oldPassword)
         {
             var user = users.FirstOrDefault(m => m.user_mail == _email);
-            _newPasswd = passwordHasher.HashPassword(_newPasswd);
-            _oldPassword = passwordHasher.HashPassword(_oldPassword);
+            _newPasswd = passwordHasher.HashPasswordMD5(_newPasswd);
+            _oldPassword = passwordHasher.HashPasswordMD5(_oldPassword);
             if(user == null)
                 throw new Exception("invalid email");
             else if(!user.user_password.Equals(_oldPassword))
                 throw new Exception("invalid password");
             user.user_password = _newPasswd;
             AppData.Instance().StudnetDatabase.SaveChanges();
-
         }
     }
 }

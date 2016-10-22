@@ -16,6 +16,7 @@ namespace Studnet
         //App data
         public StudnetDatabase StudnetDatabase { get; private set; }
         public List<User> LogedUsers { get; private set; }
+        public string WebsiteAdress { get; set; }
 
         private AppData()
         {

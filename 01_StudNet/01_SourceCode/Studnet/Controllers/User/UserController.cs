@@ -43,20 +43,12 @@ namespace Studnet.Controllers.User
                 // send verification mail
 
                 UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
-                string url = Request.Url.Host + ":" + Request.Url.Port + urlHelper.Action("VerifyMail", "User", new { userMail = Server.HtmlDecode(user.user_mail) });
-                MailMessage mail = new MailMessage("studnet@msnowak.webd.pl", user.user_mail);
-                mail.Subject = "Weryfikacja adresu email";
-                mail.Body = "Witamy, \n" +
-                            "Aby zweryfikować adres e-mail wejdź pod adres \n" +
-                            url + "\nPozdrawiamy,\n" +
-                            "Zespół StudNet";
-                SmtpClient smtpClient = new SmtpClient();
-                smtpClient.Port = 25;
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.Host = "msnowak.webd.pl";
-                smtpClient.Credentials = new NetworkCredential("studnet@msnowak.webd.pl", "studnet");
-                smtpClient.Send(mail);
+                string url = AppData.Instance().WebsiteAdress + urlHelper.Action("VerifyMail", "User", new { userMail = Server.HtmlDecode(user.user_mail) });
+                AppData.Instance().StudnetDatabase.UserManagement.SendEmailToUser(user.user_mail, "Weryfikacja adresu email",
+                    "Witamy, \n" +
+                        "Aby zweryfikować adres e-mail wejdź pod adres \n" +
+                        url + "\nPozdrawiamy,\n" +
+                        "Zespół StudNet");
                 return View("PostRegister");
             }
             catch (Exception ex)
@@ -65,6 +57,67 @@ namespace Studnet.Controllers.User
                 ViewBag.Error = ex.Message;
                 return View(user);
             }
+        }
+
+        [ValidateInput(false)]
+        [HttpGet]
+        public ActionResult ResetPassword(string dateTime, string user_mail)
+        {
+            dateTime = new PasswordHasher().UnhashPasswordCaesar(dateTime);
+            try
+            {
+                var data = dateTime.Split(':');
+                int controlSum = Convert.ToInt32(data[0]);
+                int year = Convert.ToInt32(data[3]);
+                int month = Convert.ToInt32(data[2]);
+                int day = Convert.ToInt32(data[1]);
+                int hour = Convert.ToInt32(data[4]);
+                int minute = Convert.ToInt32(data[5]);
+                DateTime requestDate = new DateTime(year, month, day, hour, minute, 0);
+                if (DateTime.Now.Subtract(requestDate).Hours > 12)
+                {
+                    throw new Exception("Given link if outdated");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                switch (ex.Message.ToLower())
+                {
+                    case "given link if outdated":
+                        ViewBag.TotalError = "Podany link wygasł. Spróbuj ponownie";
+                        break;
+                    default:
+                        ViewBag.TotalError = "Podany adres jest niepoprawny, spróbuj ponownie zresetować hasło";
+                        break;
+                }
+            }
+            ViewBag.Email = user_mail;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult ResetPassword(string user_mail, string newPassword, string repeatNewPassword)
+        {
+            if (!newPassword.Equals(repeatNewPassword))
+            {
+                ViewBag.Error = "Nowe hasła nie zgadzają się ze sobą";
+                ViewBag.Email = user_mail;
+                return View();
+            }
+
+            if (!Models.User.validatePassword(newPassword))
+            {
+                ViewBag.Error =
+                   "Nowe hasło nie spełnia kryteriów bezpieczeństwa (8-32 znaki, małe litery, duże litery i cyfry lub znaki specjalne)";
+                ViewBag.Email = user_mail;
+                return View();
+            }
+
+            AppData.Instance().StudnetDatabase.UserManagement.ChangePassword(user_mail, newPassword);
+
+            return RedirectToAction("Index", "Main");
         }
 
         /// <summary>
@@ -99,6 +152,40 @@ namespace Studnet.Controllers.User
         {
             Session.Abandon();
             return RedirectToAction("Index", "MainPage");
+        }
+
+        [HttpGet]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(string user_mail)
+        {
+            if (!AppData.Instance().StudnetDatabase.UserManagement.CheckIfUserExists(user_mail))
+            {
+                ViewBag.Error = "Podany email nie jest przypisany do żadnego konta";
+                return View();
+            }
+            else
+            {
+                DateTime now = DateTime.Now;
+                int controlSum = now.Day + now.Month + now.Year + now.Hour + now.Minute;
+                string hashedDateTime = new PasswordHasher().HashPasswordCaesar(controlSum.ToString() + ":" + now.ToString("dd:MM:yyyy:H:mm"));
+                if (hashedDateTime != "")
+                {
+                    UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
+                    string url = AppData.Instance().WebsiteAdress + urlHelper.Action("ResetPassword", "User", new { dateTime = hashedDateTime, user_mail = user_mail });
+                    AppData.Instance().StudnetDatabase.UserManagement.CreatePasswordResetRequest(user_mail, url);
+                    return View("PostForgotPassword");
+                }
+                else
+                {
+                    ViewBag.Error = "Wystąpił błąd podczas generowania polecenia. Spróbuj ponownie";
+                    return View();
+                }
+            }
         }
 
         [HttpGet]
@@ -172,7 +259,7 @@ namespace Studnet.Controllers.User
             if (!Models.User.validatePassword(newPassword))
             {
                  ViewBag.Error =
-                    "Nowe hasło nie spełnia kryteriów bezpieczeństwa (8-32 znaki, małe litery, duże litery i cyfry lub znaki specjalne";
+                    "Nowe hasło nie spełnia kryteriów bezpieczeństwa (8-32 znaki, małe litery, duże litery i cyfry lub znaki specjalne)";
                 ViewBag.Success = false;
                 return View();
             }
