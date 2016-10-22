@@ -88,13 +88,12 @@ namespace Studnet
             return ifUserExists;
         }
 
-        public void CreatePasswordResetRequest(string user_mail, string actionAdress)
-        {
-            SendEmailToUser(user_mail, "Resetowanie hasła", "Witaj, \n" +
-                "Otrzymaliśmy polecenie zresetowania Twojego hasła. Jeśli chcesz zresetować hasło, wejdź w link podany poniżej. \n" +
-                actionAdress + "\n Jeśli to polecenie nie pochodzi od Ciebie, zignoruj tą wiadomośc. \n Pozdrawiamy, \n Zespół StudNet");
-        }
-
+        /// <summary>
+        /// Method which sends an email to given user
+        /// </summary>
+        /// <param name="user_mail">User's email adress</param>
+        /// <param name="title">Title of the message</param>
+        /// <param name="body">Body of the message</param>
         public void SendEmailToUser(string user_mail, string title, string body)
         {
             try

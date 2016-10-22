@@ -33,23 +33,30 @@ namespace Studnet.Controllers.User
         /// <param name="user">User object created from data posted from form</param>
         /// <returns>Action based on result of adding</returns>
         [HttpPost]
-        public ActionResult Register(Models.User user)
+        public ActionResult Register(Models.User user, string password_repeat)
         {
             try
             {
-                AppData.Instance().StudnetDatabase
-                    .UserManagement.AddUser(user);
+                if (user.user_password != password_repeat)
+                {
+                    throw new Exception("Podane hasła nie pasują do siebie");
+                }
+                else
+                {
+                    AppData.Instance().StudnetDatabase
+                        .UserManagement.AddUser(user);
 
-                // send verification mail
+                    // send verification mail
 
-                UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
-                string url = AppData.Instance().WebsiteAdress + urlHelper.Action("VerifyMail", "User", new { userMail = Server.HtmlDecode(user.user_mail) });
-                AppData.Instance().StudnetDatabase.UserManagement.SendEmailToUser(user.user_mail, "Weryfikacja adresu email",
-                    "Witamy, \n" +
-                        "Aby zweryfikować adres e-mail wejdź pod adres \n" +
-                        url + "\nPozdrawiamy,\n" +
-                        "Zespół StudNet");
-                return View("PostRegister");
+                    UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
+                    string url = AppData.Instance().WebsiteAdress + urlHelper.Action("VerifyMail", "User", new { userMail = Server.HtmlDecode(user.user_mail) });
+                    AppData.Instance().StudnetDatabase.UserManagement.SendEmailToUser(user.user_mail, "Weryfikacja adresu email",
+                        "Witamy, \n" +
+                            "Aby zweryfikować adres e-mail wejdź pod adres \n" +
+                            url + "\nPozdrawiamy,\n" +
+                            "Zespół StudNet");
+                    return View("PostRegister");
+                }
             }
             catch (Exception ex)
             {
@@ -117,7 +124,7 @@ namespace Studnet.Controllers.User
 
             AppData.Instance().StudnetDatabase.UserManagement.ChangePassword(user_mail, newPassword);
 
-            return RedirectToAction("Index", "Main");
+            return RedirectToAction("Index", "MainPage");
         }
 
         /// <summary>
@@ -177,7 +184,11 @@ namespace Studnet.Controllers.User
                 {
                     UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
                     string url = AppData.Instance().WebsiteAdress + urlHelper.Action("ResetPassword", "User", new { dateTime = hashedDateTime, user_mail = user_mail });
-                    AppData.Instance().StudnetDatabase.UserManagement.CreatePasswordResetRequest(user_mail, url);
+                    AppData.Instance().StudnetDatabase
+                        .UserManagement.SendEmailToUser(user_mail, "Resetowanie hasła", "Witaj, \n" +
+                        "Otrzymaliśmy polecenie zresetowania Twojego hasła. Jeśli chcesz zresetować hasło, wejdź w link podany poniżej. \n" +
+                        url + "\n Jeśli to polecenie nie pochodzi od Ciebie, zignoruj tą wiadomośc. \n Pozdrawiamy, \n Zespół StudNet");
+
                     return View("PostForgotPassword");
                 }
                 else
