@@ -41,7 +41,16 @@ namespace Studnet
             {
                 foreach (var item in Encoding.ASCII.GetBytes(password))
                 {
-                    hashedPassword += Convert.ToChar(item + caesarMoveVal);
+                    var newAscii = item + caesarMoveVal;
+                    if(newAscii < 32)
+                    {
+                        newAscii = 126 - (32 - (newAscii + 1));
+                    }
+                    else if(newAscii > 126)
+                    {
+                        newAscii = 32 + ((newAscii - 1) - 126);
+                    }
+                    hashedPassword += Convert.ToChar(newAscii);
                 }
             }
             catch(Exception ex)
@@ -60,7 +69,16 @@ namespace Studnet
             {
                 foreach (var item in Encoding.ASCII.GetBytes(password))
                 {
-                    unhashedPassword += Convert.ToChar(item - caesarMoveVal);
+                    var newAscii = item - caesarMoveVal;
+                    if (newAscii < 32)
+                    {
+                        newAscii = 126 - (32 - (newAscii + 1));
+                    }
+                    else if (newAscii > 126)
+                    {
+                        newAscii = 32 + ((newAscii - 1) - 126);
+                    }
+                    unhashedPassword += Convert.ToChar(newAscii);
                 }
             }
             catch (Exception ex)

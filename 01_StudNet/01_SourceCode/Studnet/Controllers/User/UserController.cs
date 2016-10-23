@@ -70,7 +70,9 @@ namespace Studnet.Controllers.User
         [HttpGet]
         public ActionResult ResetPassword(string dateTime, string user_mail)
         {
-            dateTime = new PasswordHasher().UnhashPasswordCaesar(dateTime);
+            PasswordHasher hasher = new PasswordHasher();
+            dateTime = hasher.UnhashPasswordCaesar(dateTime);
+            user_mail = hasher.UnhashPasswordCaesar(user_mail);
             try
             {
                 var data = dateTime.Split(':');
@@ -179,11 +181,12 @@ namespace Studnet.Controllers.User
             {
                 DateTime now = DateTime.Now;
                 int controlSum = now.Day + now.Month + now.Year + now.Hour + now.Minute;
-                string hashedDateTime = new PasswordHasher().HashPasswordCaesar(controlSum.ToString() + ":" + now.ToString("dd:MM:yyyy:H:mm"));
+                PasswordHasher hasher = new PasswordHasher();
+                string hashedDateTime = hasher.HashPasswordCaesar(controlSum.ToString() + ":" + now.ToString("dd:MM:yyyy:H:mm"));
                 if (hashedDateTime != "")
                 {
                     UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
-                    string url = AppData.Instance().WebsiteAdress + urlHelper.Action("ResetPassword", "User", new { dateTime = hashedDateTime, user_mail = user_mail });
+                    string url = AppData.Instance().WebsiteAdress + urlHelper.Action("ResetPassword", "User", new { dateTime = hashedDateTime, user_mail = hasher.HashPasswordCaesar(user_mail) });
                     AppData.Instance().StudnetDatabase
                         .UserManagement.SendEmailToUser(user_mail, "Resetowanie hasła", "Witaj, \n" +
                         "Otrzymaliśmy polecenie zresetowania Twojego hasła. Jeśli chcesz zresetować hasło, wejdź w link podany poniżej. \n" +
