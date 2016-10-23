@@ -96,6 +96,7 @@
   <ItemGroup>
     <Compile Include="StudnetDatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PasswordHasherTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

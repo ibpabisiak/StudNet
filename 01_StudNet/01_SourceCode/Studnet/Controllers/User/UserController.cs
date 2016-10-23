@@ -10,6 +10,7 @@ using Studnet.Models;
 using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace Studnet.Controllers.User
 {
@@ -116,7 +117,7 @@ namespace Studnet.Controllers.User
                 return View();
             }
 
-            if (!Models.User.validatePassword(newPassword))
+            if (!validatePassword(newPassword))
             {
                 ViewBag.Error =
                    "Nowe hasło nie spełnia kryteriów bezpieczeństwa (8-32 znaki, małe litery, duże litery i cyfry lub znaki specjalne)";
@@ -127,6 +128,20 @@ namespace Studnet.Controllers.User
             AppData.Instance().StudnetDatabase.UserManagement.ChangePassword(user_mail, newPassword);
 
             return RedirectToAction("Index", "MainPage");
+        }
+
+        private bool validatePassword(string _passwd)
+        {
+            Regex passwordRegex = new Regex(@"(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d[$@$!%*?&ęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{8,32}");
+            Match regexMath = passwordRegex.Match(_passwd);
+            if (regexMath.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -270,7 +285,7 @@ namespace Studnet.Controllers.User
                 return View();
             }
 
-            if (!Models.User.validatePassword(newPassword))
+            if (!validatePassword(newPassword))
             {
                  ViewBag.Error =
                     "Nowe hasło nie spełnia kryteriów bezpieczeństwa (8-32 znaki, małe litery, duże litery i cyfry lub znaki specjalne)";

@@ -176,7 +176,7 @@
     </Compile>
     <Compile Include="App_Data\Database\StudnetDatabase.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="PasswordHasher.cs" />
+    <Compile Include="App_Data\PasswordHasher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="App_Data\Database\UserManagement.cs" />
