@@ -134,3 +134,14 @@ function testuser_semester(x) {
     return false;
 }
 
+function testuser_password(x) {
+
+    var f = document.forms['reg'];
+    if (f.user_password.value == '')
+    {
+        x.style.background = "red";
+        return false;
+    }
+    x.style.background = "white";
+    return false;
+}

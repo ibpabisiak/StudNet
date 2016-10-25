@@ -22,9 +22,29 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "MainPage")</li>
-                    <li>@Html.ActionLink("Rejestracja", "Register", "User")</li>
-                    <li>@Html.ActionLink("Logowanie", "Login", "User")</li>
+                    @{
+                        if (!(bool)Session["IsLogged"])
+                        {
+                            <li>@Html.ActionLink("Rejestracja", "Register", "User")</li>
+                            <li>@Html.ActionLink("Logowanie", "Login", "User")</li>
+                        }
+                    }         
                 </ul>
+                @{
+                    if ((bool)Session["IsLogged"])
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="False">@Session["Username"]<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Zmień hasło","ChangePassword","User")</li>
+                                    <li>@Html.ActionLink("Wyloguj", "Logout", "User")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                    }
+                }
             </div>
         </div>
     </div>
@@ -32,7 +52,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - StudNet</p>
+            <p>&copy; @DateTime.Now.Year - StudNet | @Html.ActionLink("O serwisie","About","MainPage")</p>
         </footer>
     </div>
 

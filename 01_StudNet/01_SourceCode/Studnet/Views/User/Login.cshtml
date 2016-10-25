@@ -1,12 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "Logowanie";
+    ViewBag.Title = "Zaloguj się";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Logowanie</h2>
+<h2>@ViewBag.Title</h2>
 
 <form method="post">
+    @{ 
+        if(ViewBag.Error != null)
+        {
+            <font color="red"><b>@ViewBag.Error</b></font>
+        }
+    }
     <div class="form-group">
         <label for="user_mail">E-Mail:</label>
         <input type="text" name="user_mail" class="form-control"/>
@@ -15,8 +21,8 @@
         <label for="user_password">Hasło:</label>
         <input type="password" name="user_password" class="form-control"/>
     </div>
+    @Html.ActionLink("Zapomniałeś hasła?", "ForgotPassword", "User")
     <div class="form-group">
         <input type="submit" class="btn btn-default" value="Zaloguj"/>
     </div>
 </form>
-
