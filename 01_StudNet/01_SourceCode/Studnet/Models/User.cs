@@ -50,6 +50,9 @@ namespace Studnet.Models
         [Required]
         public string user_password { get; set; }
 
+        [Column(TypeName = "date")]
+        public DateTime user_date_created { get; set; }
+
         public string GetFullName()
         {
             return user_name + " " + user_surname;

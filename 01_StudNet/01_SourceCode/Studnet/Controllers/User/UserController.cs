@@ -127,7 +127,7 @@ namespace Studnet.Controllers.User
 
             AppData.Instance().StudnetDatabase.UserManagement.ChangePassword(user_mail, newPassword);
 
-            return RedirectToAction("Index", "MainPage");
+            return View("PostResetPassword");
         }
 
         private bool validatePassword(string _passwd)
@@ -164,7 +164,7 @@ namespace Studnet.Controllers.User
             }
             else
             {
-                returnMsg = "Konto z takim adresem e-mail nie istnieje w bazie";
+                returnMsg = "Konto z takim adresem e-mail nie istnieje w bazie. Możliwe, że konto nie zostało aktywowane w ciągu tygodnia od jego założenia. Spróbuj założyć konto ponownie";
             }
             
             ViewBag.Message = returnMsg;
