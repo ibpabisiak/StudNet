@@ -28,13 +28,20 @@
     }
 }
 
+@{
+    if (ViewBag.Style != null)
+    {
+        @MvcHtmlString.Create(HttpUtility.HtmlDecode(ViewBag.Style))
+    }
+}
 <h2>Register new user</h2>
 
 <form method="post" id="reg">
     @{ 
         if (ViewBag.Error != null)
         {
-            <font color="red"><b>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje</b></font>
+            <font color="red"><b>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje
+                <br />@ViewBag.Error</b></font>
         }
     }
     <div class="form-group">
@@ -59,7 +66,7 @@
     </div>
     <div class="form-group">
         <label for="user_address_home_number">Numer lokalu:</label>
-        <input type="text" name="user_address_home_number" class="form-control" value="@home_number" onblur="return testuser_address_home_number(this)" />
+        <input type="number" name="user_address_home_number" class="form-control" value="@home_number" onblur="return testuser_address_home_number(this)" />
     </div>
     <div class="form-group">
         <label for="user_index">Numer indeksu:</label>

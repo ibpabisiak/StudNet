@@ -35,7 +35,31 @@ namespace Studnet
                 else
                 {
                     user.user_password = passwordHasher.HashPasswordMD5(user.user_password);
+                    user.user_date_created = DateTime.Now;
                     AppData.Instance().StudnetDatabase.AddRecordToTable(StudnetDatabase.TableType.Users, user);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Method for removing user from database
+        /// </summary>
+        /// <param name="user">User to remove from database</param>
+        public void RemoveUser(User user)
+        {
+            try
+            {
+                if (users.FirstOrDefault(m => m.user_mail == user.user_mail) == null)
+                {
+                    throw new Exception("User does not exist in database");
+                }
+                else
+                {
+                    AppData.Instance().StudnetDatabase.RemoveRecordFromTable(StudnetDatabase.TableType.Users, user);
                 }
             }
             catch (Exception ex)
