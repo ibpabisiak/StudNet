@@ -1,0 +1,9 @@
+11 7
+name=user_name  name=user_surname name=user_mail name=user_address_city name=user_address_street name=user_address_home_number name=user_index name=user_study_year name=user_semester name=user_password name=password_repeat
+test1 nazwiskotest test1@test.com Szczecin ulica 55 333333 5 5 zHn8BD[@#@&S'!+K zHn8BD[@#@&S'!+
+<empty> Broyles test2@test.com Szczecin ulica 55 333333 5 5 KOnku158a KOnku158a
+Zygmunt <empty> test3@test.com Szczecin ulica 55 333333 5 5 n3nMK&X<-{fk;-{f n3nMK&X<-{fk;-{f
+Stefania Nowakows <empty> Szczecin ulica 55 333333 5 5 {s\J)4J{~M-2E_zj {s\J)4J{~M-2E_zj
+W Tomaszewski test5@test.com Szczecin ulica 55 333333 5 5 =(p"y<X!>^-5v9Ts =(p"y<X!>^-5v9Ts
+Wioletta Sokolowska test6@test.com S ulica 55 333333 5 5 m}fcx\~=*WkVpS5u m}fcx\~=*WkVpS5u
+Wojtek Wojciechowski test7@test.com Szczecin ulica 55 333333 -5 5 yz=a.A'n9t@.m7Pv yz=a.A'n9t@.m7Pv

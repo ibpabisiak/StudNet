@@ -5,6 +5,7 @@ namespace Studnet.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using System.Diagnostics;
+    using System.Threading;
 
     public partial class StudnetDatabase : DbContext
     {
@@ -15,11 +16,36 @@ namespace Studnet.Models
 
         public UserManagement UserManagement { get; private set; }
         public virtual DbSet<User> Users { get; set; }
+        private Timer databaseRefreshTimer;
 
         public StudnetDatabase()
             : base("name=StudnetDatabase")
         {
             UserManagement = new UserManagement(Users);
+            //Set timer for refreshing database which will be launched every 86400 seconds - this is one day
+            databaseRefreshTimer = new Timer(RefreshDatabase, null, 1000, 86400000);
+        }
+
+        /// <summary>
+        /// Method for refreshing database (i.e. users that haven't activate their account for 7 days)
+        /// </summary>
+        /// <param name="state">State, pass null</param>
+        private void RefreshDatabase(object state)
+        {
+            foreach (var user in Users)
+            {
+                if (!user.user_mail_check && DateTime.Now.Subtract(user.user_date_created).Days >= 7)
+                {
+                    try
+                    {
+                        UserManagement.RemoveUser(user);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                    }
+                }
+            }
         }
 
         /// <summary>

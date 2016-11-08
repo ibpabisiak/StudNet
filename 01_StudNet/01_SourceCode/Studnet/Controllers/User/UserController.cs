@@ -38,8 +38,86 @@ namespace Studnet.Controllers.User
         {
             try
             {
+                Regex regex;
+                regex = new Regex(@"^(?=.*)[a-zA-ZęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{1,12}$");
+                
+                // data validation
+                if (this.validatePassword(user.user_password) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_password\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Hasło nie spełnia kryteriów bezpieczeństwa");
+                }
+                if (regex.IsMatch(user.user_name) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_name\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Imię może składać się tylko z liter oraz polskich znaków. Długość to 1-12 znaków.");
+                }
+                if (user.user_address_street.Length < 1 || user.user_address_street.Length > 32)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_address_street\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Nazwa ulicy przekracza dozwoloną ilość znaków (32)");
+                }
+                regex = new Regex(@"^(?=.*)[a-zA-ZęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{1,}$");
+                if (regex.IsMatch(user.user_address_city))
+                {
+                    user.user_address_city = user.user_address_city.First().ToString().ToUpper() + user.user_address_city.Substring(1); // first letter to upper
+                }
+                else
+                {
+                    ViewBag.Style = "<style>input[name=\"user_address_city\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Miasto to tylko litery oraz polskie znaki.");
+                }
+                if (user.user_semester < 0 || user.user_semester > 9)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_semester\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Dozwolone znaki w semestrze to to 0-9");
+                }
+                if (int.Parse(user.user_address_home_number) < 0 || int.Parse(user.user_address_home_number) > 9)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_address_home_number\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Numer domu to tylko cyfry 0-9");
+                }
+
+                if (user.user_study_year < 0 || user.user_study_year > 9)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_study_year\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Rok studiów to tylko cyfry 0-9");
+                }
+
+                regex = new Regex(@"^(?<=.*)[\d]{1,5}$");
+                if (regex.IsMatch(user.user_index.ToString()) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_index\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Numer indeksu to 1-5 znaków, same cyfry");
+                }
+
+                //walidacja email
+                regex = new Regex(@"^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$");
+                if (regex.IsMatch(user.user_mail) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_mail\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Niewłaściwy format adresu email");
+                }
+
+                //email - ucinanie od plusa
+                string temp;
+                if (user.user_mail.IndexOf("+") != -1)
+                {
+                    temp = user.user_mail.Substring(0, user.user_mail.IndexOf("+"));
+                    temp += user.user_mail.Substring(user.user_mail.IndexOf("@"));
+                    user.user_mail = temp;
+                }
+
+                regex = new Regex(@"^(?=.*)[a-zA-ZęąśżźćńłóĘĄŚŻŹĆŃŁÓ-]{1,24}$");
+                if (regex.IsMatch(user.user_surname) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_surname\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Nazwisko to tylko litery, polskie znaki i \"-\". Długość to 1-24 znaki.");
+                }
+                
                 if (user.user_password != password_repeat)
                 {
+                    ViewBag.Style = "<style>input[name=\"user_password_repeat\"] {background-color: #fc0000;}</style>";
                     throw new Exception("Podane hasła nie pasują do siebie");
                 }
                 else
@@ -56,6 +134,7 @@ namespace Studnet.Controllers.User
                             "Aby zweryfikować adres e-mail wejdź pod adres \n" +
                             url + "\nPozdrawiamy,\n" +
                             "Zespół StudNet");
+                    ViewBag.Mail = user.user_mail;
                     return View("PostRegister");
                 }
             }
@@ -127,12 +206,12 @@ namespace Studnet.Controllers.User
 
             AppData.Instance().StudnetDatabase.UserManagement.ChangePassword(user_mail, newPassword);
 
-            return RedirectToAction("Index", "MainPage");
+            return View("PostResetPassword");
         }
 
         private bool validatePassword(string _passwd)
         {
-            Regex passwordRegex = new Regex(@"(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d[$@$!%*?&ęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{8,32}");
+            /*Regex passwordRegex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d[$@!%*?&+/<{}\-_=\"\',.`~\|;:ęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{8,32}$");
             Match regexMath = passwordRegex.Match(_passwd);
             if (regexMath.Success)
             {
@@ -141,7 +220,9 @@ namespace Studnet.Controllers.User
             else
             {
                 return false;
-            }
+            }*/
+
+            return true;
         }
 
         /// <summary>
@@ -164,7 +245,7 @@ namespace Studnet.Controllers.User
             }
             else
             {
-                returnMsg = "Konto z takim adresem e-mail nie istnieje w bazie";
+                returnMsg = "Konto z takim adresem e-mail nie istnieje w bazie. Możliwe, że konto nie zostało aktywowane w ciągu tygodnia od jego założenia. Spróbuj założyć konto ponownie";
             }
             
             ViewBag.Message = returnMsg;
