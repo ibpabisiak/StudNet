@@ -211,7 +211,7 @@ namespace Studnet.Controllers.User
 
         private bool validatePassword(string _passwd)
         {
-            Regex passwordRegex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d[$@$!%*?&ęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{8,32}$");
+            Regex passwordRegex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d[$@!%*?&+/<{}\-_=\"\',.`~\|;:ęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{8,32}$");
             Match regexMath = passwordRegex.Match(_passwd);
             if (regexMath.Success)
             {
