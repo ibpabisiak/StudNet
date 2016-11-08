@@ -92,15 +92,13 @@ namespace Studnet.Controllers.User
                 }
 
                 //walidacja email
-                try
-                {
-                    MailAddress m = new MailAddress(user.user_mail);
-                }
-                catch (FormatException)
+                regex = new Regex(@"^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$");
+                if (regex.IsMatch(user.user_mail) == false)
                 {
                     ViewBag.Style = "<style>input[name=\"user_mail\"] {background-color: #fc0000;}</style>";
                     throw new Exception("Niewłaściwy format adresu email");
                 }
+
                 //email - ucinanie od plusa
                 string temp;
                 if (user.user_mail.IndexOf("+") != -1)
