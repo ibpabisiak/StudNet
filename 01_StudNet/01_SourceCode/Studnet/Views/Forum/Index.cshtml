@@ -20,13 +20,22 @@
             </tr>
 
             @{ foreach (var topic in forum.forum_topic)
-               {
+                {
                     <tr>
                         <td style="padding: 10px 0">@Html.ActionLink(topic.forum_topic_title, "SeeThread", "Forum", new { thread_id = topic.Id }, null)</td>
                         <td style="padding: 10px 0">@topic.users.GetFullName()</td>
                         <td style="padding: 10px 0">@topic.forum_topic_date_created.ToString("dd.MM.yyyy")</td>
                         <td style="padding: 10px 0">@topic.forum_topic_reply.Count.ToString()</td>
-                        <td style="padding: 10px 0">@topic.forum_topic_reply.Last().users.GetFullName(), @topic.forum_topic_reply.Last().forum_topic_reply_date_created.ToString("dd.MM.yyyy")</td>
+                        @{ 
+                            if(topic.forum_topic_reply.Count == 0)
+                            {
+                                <td>-</td>
+                            }
+                            else
+                            {
+                                <td style="padding: 10px 0">@topic.forum_topic_reply.Last().users.GetFullName(), @topic.forum_topic_reply.Last().forum_topic_reply_date_created.ToString("dd.MM.yyyy")</td>
+                            }
+                        }
                     </tr>
                }
              }

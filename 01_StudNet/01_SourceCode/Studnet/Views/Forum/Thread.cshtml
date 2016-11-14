@@ -9,6 +9,14 @@
             @Html.ActionLink("<- Powrót", "Index", "Forum");
         <br/><br />
         <center>
+            @{ 
+                if (Model.forum_topic_reply.Count == 0)
+                {
+                    <b>Brak wpisów</b>
+                }
+                else
+                {
+
             <table style="width:80%">
                 @{
                     foreach (var reply in Model.forum_topic_reply)
@@ -29,8 +37,10 @@
                             <td>&nbsp</td>
                         </tr>
                     }
-                }
+                    }
             </table>
+                        }
+                    }
             <br /><br />
             <b>Twoja odpowiedź:</b>
             <form method="post" action="AddReply">
