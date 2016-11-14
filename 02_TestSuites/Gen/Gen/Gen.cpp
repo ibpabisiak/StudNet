@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include <string>
 #include <iostream>
-
 #include <fstream>
 #include <vector>
 
@@ -27,16 +26,7 @@ int LoadTestingData(std::vector<std::vector<std::string>> &DataFile, std::vector
 				ParametrDataFile.push_back(tmp);
 			}
 			else
-			{
-				if (tmp != "<empty>")
-				{
-					DataFile[(i - lp) / lp].push_back(tmp);
-				}
-				else
-				{
-					DataFile[(i - lp) / lp].push_back("");
-				}
-			}	
+				DataFile[(i-lp)/lp].push_back(tmp);
 			i++;
 		}
 	}
@@ -125,7 +115,7 @@ int main()
 	std::vector<std::vector<std::string>> DataFile;
 	std::vector<std::string> ParametrDataFile;
 	LoadTestingData(DataFile, ParametrDataFile, NameDataFile);
-	//Generate(DataFile, ParametrDataFile, TestName, ExampleTestFile);
+	Generate(DataFile, ParametrDataFile, TestName, ExampleTestFile);
 
 
     return 0;

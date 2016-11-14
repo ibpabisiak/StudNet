@@ -1,0 +1,55 @@
+﻿@model Studnet.Models.forum_topic
+
+@{
+    if (Model != null)
+    {
+
+        ViewBag.Title = Model.forum.forum_name + " - " + Model.forum_topic_title;
+            <h2>@ViewBag.Title</h2>
+            @Html.ActionLink("<- Powrót", "Index", "Forum");
+        <br/><br />
+        <center>
+            <table style="width:80%">
+                @{
+                    foreach (var reply in Model.forum_topic_reply)
+                    {
+                        <tr>
+                            <th>@reply.users.GetFullName()</th>
+                            <th>&nbsp</th>
+                            <th style="float:right">@reply.forum_topic_reply_date_created.ToString("dd.MM.yyyy")</th>
+                        </tr>
+                        <tr>
+                            <td>&nbsp</td>
+                            <td>&nbsp</td>
+                            <td>&nbsp</td>
+                        </tr>
+                        <tr style="border-bottom: 2pt solid black">
+                            <td style="word-wrap:break-word; max-width:400px">@reply.forum_topic_reply_content</td>
+                            <td>&nbsp</td>
+                            <td>&nbsp</td>
+                        </tr>
+                    }
+                }
+            </table>
+            <br /><br />
+            <b>Twoja odpowiedź:</b>
+            <form method="post" action="AddReply">
+                @{
+                    if (ViewBag.Error != null)
+                    {
+                        <font color="red"><b>@ViewBag.Error</b></font>
+                    }
+                }
+                <input type="hidden" name="thread_id" value="@Model.Id" />
+                <input type="hidden" name="forum_id" value="@Model.forum.Id" />
+                <div class="form-group">
+                    <textarea name="forum_topic_reply_content" cols="70" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" value="Dodaj odpowiedź" />
+                </div>
+            </form>
+            <br /><br />
+        </center>
+                    }
+}
