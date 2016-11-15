@@ -4,85 +4,89 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:29489/" />
-<title>logowanie_1</title>
+<title>TestRejestracji_02</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">logowanie_1</td></tr>
+<tr><td rowspan="1" colspan="3">TestRejestracji_02</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/User/Register</td>
+	<td>/</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=StudNet</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=div.container.body-content &gt; a</td>
+	<td>link=Rejestracja</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=user_name</td>
-<td>liso</td>
+	<td>Jacek</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=user_surname</td>
-<td>zysio</td>
+	<td>Pitupitu</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test12@onet.eu</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=user_address_city</td>
-<td>Plock</td>
+	<td>Opole</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=user_address_street</td>
-<td>Piostow</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=user_address_street_number</td>
-<td>Piostow</td>
+	<td>Czysta</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=user_address_home_number</td>
-<td>54</td>
+	<td>7</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>name=user_index_number</td>
-<td>123456</td>
+	<td>name=user_index</td>
+	<td>4321</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>name=user_study_number</td>
-<td>6</td>
+	<td>name=user_study_year</td>
+	<td>1</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=user_semester</td>
-<td>6</td>
+	<td>5</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=user_password</td>
-<td>thxwstp</td>
+	<td>alamakota123</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>alamakota123</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>css=input.btn.btn-default</td>
 	<td></td>
 </tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Zarejestrowano</td>
+</tr>
 
 </tbody></table>
 </body>
 </html>
-
