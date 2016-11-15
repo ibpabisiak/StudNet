@@ -8,19 +8,19 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
-<tr><td><a href="../../Register_test/1.html">TestRejestracji_01</a></td></tr>
-<tr><td><a href="../../Register_test/2.html">TestRejestracji_02</a></td></tr>
-<tr><td><a href="../../Register_test/3.html">TestRejestracji_03</a></td></tr>
-<tr><td><a href="../../Register_test/4.html">TestRejestracji_04</a></td></tr>
-<tr><td><a href="../../Register_test/5.html">TestRejestracji_05</a></td></tr>
-<tr><td><a href="../../Register_test/6.html">TestRejestracji_06</a></td></tr>
-<tr><td><a href="../../Register_test/7.html">TestRejestracji_07</a></td></tr>
-<tr><td><a href="../../Register_test/8.html">TestRejestracji_08</a></td></tr>
-<tr><td><a href="a.html">TestRejestracji_09</a></td></tr>
-<tr><td><a href="../../Register_test/TestLogowania_01.html">TestLogowania_01</a></td></tr>
-<tr><td><a href="../../Register_test/TestLogowania_02.html">TestLogowania_02</a></td></tr>
-<tr><td><a href="../../Register_test/TestLogowania_03.html">TestLogowania_03</a></td></tr>
-<tr><td><a href="../../Register_test/TestForum_01.html">TestForum_01</a></td></tr>
+<tr><td><a href="TestRejestracji_01.html">TestRejestracji_01</a></td></tr>
+<tr><td><a href="TestRejestracji_02.html">TestRejestracji_02</a></td></tr>
+<tr><td><a href="TestRejestracji_03.html">TestRejestracji_03</a></td></tr>
+<tr><td><a href="TestRejestracji_04.html">TestRejestracji_04</a></td></tr>
+<tr><td><a href="TestRejestracji_05.html">TestRejestracji_05</a></td></tr>
+<tr><td><a href="TestRejestracji_06.html">TestRejestracji_06</a></td></tr>
+<tr><td><a href="TestRejestracji_07.html">TestRejestracji_07</a></td></tr>
+<tr><td><a href="TestRejestracji_08.html">TestRejestracji_08</a></td></tr>
+<tr><td><a href="TestRejestracji_09.html">TestRejestracji_09</a></td></tr>
+<tr><td><a href="TestLogowania_01.html">TestLogowania_01</a></td></tr>
+<tr><td><a href="TestLogowania_02.html">TestLogowania_02</a></td></tr>
+<tr><td><a href="TestLogowania_03.html">TestLogowania_03</a></td></tr>
+<tr><td><a href="TestForum_01.html">TestForum_01</a></td></tr>
 </tbody></table>
 </body>
 </html>
