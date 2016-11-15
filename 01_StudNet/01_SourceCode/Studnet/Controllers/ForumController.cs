@@ -101,14 +101,28 @@ namespace Studnet.Controllers
                 ViewBag.Error = "Temat o podanej nazwie już istnieje!";
                 return View(threadForum);
             }
-            else if(threadPost.forum_topic_reply_content.Length <= 1)
+            else if(forumTopic.forum_topic_title == null || forumTopic.forum_topic_title.Length <=1)
+            {
+                ViewBag.Error = "Nazwa tematu musi zawierać co najmniej dwa znaki";
+                return View(threadForum);
+            }
+            else if(threadPost.forum_topic_reply_content == null || threadPost.forum_topic_reply_content.Length <= 1)
             {
                 ViewBag.Error = "Treść wpisu musi zawierać co najmniej dwa znaki";
                 return View(threadForum);
             }
             else
             {
-                AppData.Instance().StudnetDatabase.ForumManagement.AddThread(threadForum, forumTopic, threadPost, Session["User"].ToString());
+                try
+                {
+                    AppData.Instance().StudnetDatabase.ForumManagement.AddThread(threadForum, forumTopic, threadPost, Session["User"].ToString());
+                }
+                catch(Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    ViewBag.Error = "Wystąpił nieoczekiwany błąd. Sprawdź wszystkie wprowadzone dane i spróbuj ponownie";
+                    return View(threadForum);
+                }
                 return View("Thread", forumTopic);
             }
         }

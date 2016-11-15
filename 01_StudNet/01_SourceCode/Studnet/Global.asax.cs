@@ -8,7 +8,7 @@ using System.Web.Routing;
 
 namespace Studnet
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -25,7 +25,10 @@ namespace Studnet
 
         public void Session_OnEnd()
         {
-            AppData.Instance().LogoutUser(Session["User"].ToString());
+            if (Session["User"] != null)
+            {
+                AppData.Instance().LogoutUser(Session["User"].ToString());
+            }
             Session.Clear();
             Session["IsLogged"] = false;
         }

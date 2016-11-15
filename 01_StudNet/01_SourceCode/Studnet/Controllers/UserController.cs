@@ -153,8 +153,7 @@ namespace Studnet.Controllers.User
         [HttpGet]
         public ActionResult VerifyMail(string userMail)
         {
-            var userFind =
-                AppData.Instance().StudnetDatabase.users.FirstOrDefault(w => w.user_mail == userMail);
+            var userFind = AppData.Instance().StudnetDatabase.users.FirstOrDefault(w => w.user_mail == userMail);
             string returnMsg = "";
             if (userFind != null)
             {
