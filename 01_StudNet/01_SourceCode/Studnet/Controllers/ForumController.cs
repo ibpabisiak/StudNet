@@ -37,7 +37,7 @@ namespace Studnet.Controllers
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                return RedirectToAction("Main", "Index");
+                return RedirectToAction("Index", "MainPage");
             }
         }
 
@@ -60,7 +60,7 @@ namespace Studnet.Controllers
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                return RedirectToAction("Main", "Index");
+                return RedirectToAction("Index", "MainPage");
             }
         }
 
@@ -74,7 +74,7 @@ namespace Studnet.Controllers
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                return RedirectToAction("Main", "Index");
+                return RedirectToAction("Index", "MainPage");
             }
         }
 
@@ -88,7 +88,7 @@ namespace Studnet.Controllers
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                return RedirectToAction("Main", "Index");
+                return RedirectToAction("Index", "MainPage");
             }
         }
 
