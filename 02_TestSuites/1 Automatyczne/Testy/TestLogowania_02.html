@@ -4,16 +4,16 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:29489/" />
-<title>Example_Login</title>
+<title>TestLogowania_02</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Example_Login</td></tr>
+<tr><td rowspan="1" colspan="3">TestLogowania_02</td></tr>
 </thead><tbody>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=StudNet</td>
+	<td>open</td>
+	<td>/</td>
 	<td></td>
 </tr>
 <tr>
@@ -24,19 +24,24 @@
 <tr>
 	<td>type</td>
 	<td>name=user_mail</td>
-	<td>waldek@interia.eu</td>
+	<td>asd321@a11.asd</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>jojojo</td>
+	<td>asd</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>css=input.btn.btn-default</td>
 	<td></td>
 </tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Podane hasło jest nieprawidłowe</td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
-
