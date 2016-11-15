@@ -127,8 +127,7 @@ namespace Studnet.Controllers.User
                 }
                 else
                 {
-                    AppData.Instance().StudnetDatabase
-                        .UserManagement.AddUser(user);
+
 
                     // send verification mail
 
@@ -139,6 +138,7 @@ namespace Studnet.Controllers.User
                             "Aby zweryfikować adres e-mail wejdź pod adres \n" +
                             url + "\nPozdrawiamy,\n" +
                             "Zespół StudNet");
+                    AppData.Instance().StudnetDatabase.UserManagement.AddUser(user);
                     return View("PostRegister");
                 }
             }
