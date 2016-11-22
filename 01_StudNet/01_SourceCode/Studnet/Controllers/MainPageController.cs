@@ -8,6 +8,18 @@ namespace Studnet.Controllers.Main
 {
     public class MainPageController : Controller
     {
+        public AppData AppData
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
         // GET: Main
         public ActionResult Index()
         {

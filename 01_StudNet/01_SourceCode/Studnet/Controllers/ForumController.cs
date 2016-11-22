@@ -10,6 +10,30 @@ namespace Studnet.Controllers
 {
     public class ForumController : Controller
     {
+        public forum forum
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public AppData AppData
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
         private ActionResult ValidateLoggedAction(ActionResult loggedAction)
         {
             if (!(bool)Session["IsLogged"])

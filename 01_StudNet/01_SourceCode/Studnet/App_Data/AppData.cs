@@ -19,6 +19,30 @@ namespace Studnet
         public List<users> LogedUsers { get; private set; }
         public string WebsiteAdress { get; set; }
 
+        public users users
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public StudnetDatabase StudnetDatabase1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
         private AppData()
         {
             LogedUsers = new List<users>();

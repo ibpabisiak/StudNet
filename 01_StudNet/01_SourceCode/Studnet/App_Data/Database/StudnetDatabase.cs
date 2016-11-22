@@ -25,6 +25,78 @@ namespace Studnet.Models
         public virtual DbSet<forum_topic_reply> forum_topic_reply { get; set; }
         public virtual DbSet<users> users { get; set; }
 
+        public ForumManagement ForumManagement1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public UserManagement UserManagement1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public forum_topic forum_topic1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public forum_topic_reply forum_topic_reply1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public forum forum1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public users users1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
         private Timer databaseRefreshTimer;
 
         public StudnetDatabase()
