@@ -232,6 +232,7 @@
     <Content Include="Views\Forum\Index.cshtml" />
     <Content Include="Views\Forum\Thread.cshtml" />
     <Content Include="Views\Forum\AddThread.cshtml" />
+    <Content Include="Diagrams\UML_Diagram.cd" />
     <None Include="Views\User\VerifyMail.cshtml" />
   </ItemGroup>
   <ItemGroup />
@@ -257,7 +258,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>29489</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

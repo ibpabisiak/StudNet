@@ -16,6 +16,29 @@ namespace Studnet.Controllers.User
 {
     public class UserController : Controller
     {
+        public AppData AppData
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public PasswordHasher PasswordHasher
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
 
         // GET: User
         public ActionResult Index()
