@@ -17,38 +17,19 @@ namespace Studnet.Models
             ForumTopicReply
         }
 
+        //public UserManagement UserManagement { get; private set; }
+        //public ForumManagement ForumManagement { get; private set; }
         public UserManagement UserManagement { get; private set; }
-        public ForumManagement ForumManagement { get; private set; }
+        public ForumManagement ForumManagement {get; private set;}
 
         public virtual DbSet<forum> forum { get; set; }
         public virtual DbSet<forum_topic> forum_topic { get; set; }
         public virtual DbSet<forum_topic_reply> forum_topic_reply { get; set; }
         public virtual DbSet<users> users { get; set; }
 
-        public ForumManagement ForumManagement1
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
 
-            set
-            {
-            }
-        }
-
-        public UserManagement UserManagement1
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
+        //pola nizej musza byc ze wzgledu na UML.. uzywamy Entity, ale visual
+        //go nie uznaje do UML wiec ... dlatego nie chcemy UML z Visual Studio
         public forum_topic forum_topic1
         {
             get

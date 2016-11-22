@@ -9,14 +9,13 @@
   </Class>
   <Class Name="Studnet.Models.StudnetDatabase" Collapsed="true">
     <Position X="5.25" Y="3.75" Width="1.5" />
-    <AssociationLine Name="UserManagement1" Type="Studnet.UserManagement" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="5.25" Y="3.938" />
-        <Point X="4.875" Y="3.938" />
-        <Point X="4.875" Y="2.531" />
-        <Point X="3.5" Y="2.531" />
-      </Path>
-    </AssociationLine>
+    <NestedTypes>
+      <Enum Name="Studnet.Models.StudnetDatabase.TableType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>App_Data\Database\StudnetDatabase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <AssociationLine Name="forum1" Type="Studnet.Models.forum" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="6.75" Y="3.875" />
@@ -32,17 +31,25 @@
         <Point X="8.188" Y="4.75" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="UserManagement" Type="Studnet.UserManagement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="3.938" />
+        <Point X="4.875" Y="3.938" />
+        <Point X="4.875" Y="2.531" />
+        <Point X="3.5" Y="2.531" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>IgAAAAAAACAAAEAgAAAAAAABEEAAQAEAAACAAAAAAAI=</HashCode>
+      <HashCode>IgAAAAAAACAAAEAgAAAAAAABEEAAAAEAAACAAAAAAAI=</HashCode>
       <FileName>App_Data\Database\StudnetDatabase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="ForumManagement1" />
-      <Property Name="UserManagement1" />
+      <Property Name="ForumManagement" />
       <Property Name="forum_topic1" />
       <Property Name="forum_topic_reply1" />
       <Property Name="forum1" />
       <Property Name="users1" />
+      <Property Name="UserManagement" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Studnet.UserManagement" Collapsed="true">
