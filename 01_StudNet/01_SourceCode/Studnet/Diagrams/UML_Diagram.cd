@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Studnet.ForumManagement" Collapsed="true">
+    <Position X="1.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>App_Data\Database\ForumManagement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Studnet.Models.StudnetDatabase" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <AssociationLine Name="forum_topic_reply1" Type="Studnet.Models.forum_topic_reply" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.562" Y="3.75" />
+        <Point X="6.562" Y="3.375" />
+        <Point X="8.125" Y="3.375" />
+        <Point X="8.125" Y="2.812" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.557" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="users1" Type="Studnet.Models.users" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="4.312" />
+        <Point X="7.75" Y="4.312" />
+        <Point X="7.75" Y="4.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.284" Y="0.204" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="forum1" Type="Studnet.Models.forum" FixedFromPoint="true">
+      <Path>
+        <Point X="6.75" Y="4" />
+        <Point X="10" Y="4" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IgAAAAAAACAAAEAgAAAAAAABEEAAQAEAAACAAAAAAAI=</HashCode>
+      <FileName>App_Data\Database\StudnetDatabase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ForumManagement1" />
+      <Property Name="UserManagement1" />
+      <Property Name="forum_topic1" />
+      <Property Name="forum_topic_reply1" />
+      <Property Name="users1" />
+      <Property Name="forum1" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Studnet.UserManagement" Collapsed="true">
+    <Position X="1.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAAACAAAAAgAQAAAAAQAAAAAAAAAEgAAAAAAAAAAA=</HashCode>
+      <FileName>App_Data\Database\UserManagement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Studnet.AppData" Collapsed="true">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <AssociationLine Name="StudnetDatabase1" Type="Studnet.Models.StudnetDatabase">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.713" Y="0.195" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="users" Type="Studnet.Models.users">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.338" Y="0.154" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAARAAAAgAAAAAAAAAABAAAAAQQACAAAAACA=</HashCode>
+      <FileName>App_Data\AppData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StudnetDatabase1" />
+      <Property Name="users" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Studnet.PasswordHasher" Collapsed="true">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAEICAAAAAAAIAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>App_Data\PasswordHasher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Studnet.Controllers.ForumController" Collapsed="true">
+    <Position X="7" Y="7.75" Width="1.5" />
+    <AssociationLine Name="forum" Type="Studnet.Models.forum" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="8.062" />
+        <Point X="10.938" Y="8.062" />
+        <Point X="10.938" Y="4.312" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="AppData" Type="Studnet.AppData" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="7.75" />
+        <Point X="7.5" Y="7.375" />
+        <Point X="5.75" Y="7.375" />
+        <Point X="5.75" Y="6.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.555" Y="0.12" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAAAAAAABAAAAAAAAAAAAAAAAEACAAAEAI=</HashCode>
+      <FileName>Controllers\ForumController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="forum" />
+      <Property Name="AppData" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Studnet.Controllers.Main.MainPageController" Collapsed="true">
+    <Position X="5" Y="7.75" Width="1.5" />
+    <AssociationLine Name="AppData" Type="Studnet.AppData" FixedToPoint="true">
+      <Path>
+        <Point X="5.188" Y="7.75" />
+        <Point X="5.188" Y="6.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.39" Y="0.591" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAEACAAAAAA=</HashCode>
+      <FileName>Controllers\MainPageController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AppData" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Studnet.Controllers.User.UserController" Collapsed="true">
+    <Position X="3" Y="7.75" Width="1.5" />
+    <AssociationLine Name="AppData" Type="Studnet.AppData" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.719" Y="7.75" />
+        <Point X="3.719" Y="6.437" />
+        <Point X="4.812" Y="6.437" />
+        <Point X="4.812" Y="6.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.341" Y="0.277" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAIAgAAAAAAAAAIAAEABAAAABAEQCAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AppData" />
+      <Property Name="PasswordHasher" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Studnet.Models.forum" Collapsed="true">
+    <Position X="10" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\forum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Studnet.Models.forum_topic" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAgIAAAQAAAAAAAAAABAAAAAAAAAAAAAAAAQAI=</HashCode>
+      <FileName>Models\forum_topic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Studnet.Models.forum_topic_reply" Collapsed="true">
+    <Position X="7.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAKAAAgAAAAAAAAAgAAAgAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\forum_topic_reply.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Studnet.Models.users" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABiAAAAAAAQAAAAAAAAAAABgHAEAAAIAAAAAgAAECI=</HashCode>
+      <FileName>Models\users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
