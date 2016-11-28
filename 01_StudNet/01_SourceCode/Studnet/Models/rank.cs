@@ -14,7 +14,8 @@ namespace Studnet.Models
         {
             users = new HashSet<users>();
         }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]

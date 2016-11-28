@@ -168,15 +168,6 @@ namespace Studnet.Controllers.User
             {
                 ViewBag.Error = ex.Message;
                 Debug.WriteLine(ex);
-                try
-                {
-                    AppData.Instance().StudnetDatabase.UserManagement.RemoveUser(user);
-                }
-                catch(Exception ex1)
-                {
-                    Debug.WriteLine(ex1);
-                    ViewBag.Error = ex1.Message;
-                }
                 return View(user);
             }
         }

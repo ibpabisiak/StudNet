@@ -14,7 +14,8 @@ namespace Studnet.Models
         {
             forum_topic = new HashSet<forum_topic>();
         }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
