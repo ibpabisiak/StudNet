@@ -23,6 +23,18 @@
         <textarea name="forum_topic_reply_content" cols="40" rows="5"></textarea>
     </div>
     <div class="form-group">
+        <label for="forum_topic_reply_content">Kategoria tematu:</label>
+        <select name="forum_topic_category_id">
+            <option value="0" selected>Wybierz kategorię:</option>
+            @{ 
+                foreach (var category in (List<Studnet.Models.forum_topic_category>)ViewBag.Categories)
+                {
+                    <option value="@category.Id">@category.forum_topic_category_name</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
         <input type="submit" class="btn btn-default" value="Utwórz temat" />
     </div>
 </form>

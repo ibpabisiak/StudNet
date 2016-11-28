@@ -14,7 +14,10 @@ namespace Studnet.Models
             Users,
             Forum,
             ForumTopic,
-            ForumTopicReply
+            ForumTopicReply,
+            Rank,
+            ForumTopicCategory,
+            Event
         }
 
         public UserManagement UserManagement { get; private set; }
@@ -22,7 +25,10 @@ namespace Studnet.Models
 
         public virtual DbSet<forum> forum { get; set; }
         public virtual DbSet<forum_topic> forum_topic { get; set; }
+        public virtual DbSet<forum_topic_category> forum_topic_category { get; set; }
         public virtual DbSet<forum_topic_reply> forum_topic_reply { get; set; }
+        public virtual DbSet<rank> rank { get; set; }
+        public virtual DbSet<_event> _event { get; set; }
         public virtual DbSet<users> users { get; set; }
 
         private Timer databaseRefreshTimer;
@@ -42,19 +48,26 @@ namespace Studnet.Models
         /// <param name="state">State, pass null</param>
         private void RefreshDatabase(object state)
         {
-            foreach (var user in users)
+            try
             {
-                if (!user.user_mail_check && DateTime.Now.Subtract(user.user_date_created).Days >= 7)
+                foreach (var user in users)
                 {
-                    try
+                    if (!user.user_mail_check && DateTime.Now.Subtract(user.user_date_created).Days >= 7)
                     {
-                        UserManagement.RemoveUser(user);
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex);
+                        try
+                        {
+                            UserManagement.RemoveUser(user);
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex);
+                        }
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
             }
         }
 
@@ -80,6 +93,61 @@ namespace Studnet.Models
                         break;
                     case TableType.ForumTopicReply:
                         forum_topic_reply.Remove((forum_topic_reply)data);
+                        break;
+                    case TableType.Rank:
+                        rank.Remove((rank)data);
+                        break;
+                    case TableType.ForumTopicCategory:
+                        forum_topic_category.Remove((forum_topic_category)data);
+                        break;
+                    case TableType.Event:
+                        _event.Remove((_event)data);
+                        break;
+                }
+                SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void UpdateTableEntry(TableType table, object data)
+        {
+            object currentEntry = null;
+            try
+            {
+                switch (table)
+                {
+                    case TableType.Users:
+                        currentEntry = users.Where(m => m.Id == ((users)data).Id).Single();
+                        users.Remove((users)currentEntry);
+                        users.Add((users)data); break;
+                    case TableType.Forum:
+                        currentEntry = forum.Where(m => m.Id == ((forum)data).Id).Single();
+                        forum.Remove((forum)currentEntry);
+                        forum.Add((forum)data); break;
+                    case TableType.ForumTopic:
+                        currentEntry = forum_topic.Where(m => m.Id == ((forum_topic)data).Id).Single();
+                        forum_topic.Remove((forum_topic)currentEntry);
+                        forum_topic.Add((forum_topic)data); break;
+                    case TableType.ForumTopicReply:
+                        currentEntry = forum_topic_reply.Where(m => m.Id == ((forum_topic_reply)data).Id).Single();
+                        forum_topic_reply.Remove((forum_topic_reply)currentEntry);
+                        forum_topic_reply.Add((forum_topic_reply)data); break;
+                    case TableType.Rank:
+                        currentEntry = rank.Where(m => m.Id == ((rank)data).Id).Single();
+                        rank.Remove((rank)currentEntry);
+                        rank.Add((rank)data); break;
+                    case TableType.ForumTopicCategory:
+                        currentEntry = forum_topic_category.Where(m => m.Id == ((forum_topic_category)data).Id).Single();
+                        forum_topic_category.Remove((forum_topic_category)currentEntry);
+                        forum_topic_category.Add((forum_topic_category)data);
+                        break;
+                    case TableType.Event:
+                        currentEntry = _event.Where(m => m.Id == ((_event)data).Id).Single();
+                        _event.Remove((_event)currentEntry);
+                        _event.Add((_event)data);
                         break;
                 }
                 SaveChanges();
@@ -113,6 +181,15 @@ namespace Studnet.Models
                     case TableType.ForumTopicReply:
                         forum_topic_reply.Add((forum_topic_reply)data);
                         break;
+                    case TableType.Rank:
+                        rank.Add((rank)data);
+                        break;
+                    case TableType.ForumTopicCategory:
+                        forum_topic_category.Add((forum_topic_category)data);
+                        break;
+                    case TableType.Event:
+                        _event.Add((_event)data);
+                        break;
                 }
                 SaveChanges();
             }
@@ -140,6 +217,14 @@ namespace Studnet.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<_event>()
+                .Property(e => e.event_title)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<_event>()
+                .Property(e => e.event_description)
+                .IsUnicode(false);
+
             modelBuilder.Entity<forum>()
                 .Property(e => e.forum_name)
                 .IsUnicode(false);
@@ -160,9 +245,23 @@ namespace Studnet.Models
                 .HasForeignKey(e => e.forum_topic_id)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<forum_topic_category>()
+                .Property(e => e.forum_topic_category_name)
+                .IsUnicode(false);
+
             modelBuilder.Entity<forum_topic_reply>()
                 .Property(e => e.forum_topic_reply_content)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<rank>()
+                .Property(e => e.rank_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<rank>()
+                .HasMany(e => e.users)
+                .WithRequired(e => e.rank)
+                .HasForeignKey(e => e.user_rank_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<users>()
                 .Property(e => e.user_name)

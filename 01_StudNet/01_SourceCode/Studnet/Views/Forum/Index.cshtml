@@ -1,15 +1,30 @@
-﻿
+﻿@model List<Studnet.Models.forum>
 @{
     ViewBag.Title = "Fora";
 }
 
 <h2>@ViewBag.Title</h2>
 @{
-    foreach (var forum in AppData.Instance().StudnetDatabase.forum)
+    if (Session["Rank"].ToString().ToLower().Contains("admin"))
+    {
+        @Html.ActionLink("Dodaj forum", "AddForum", "Forum");<br />
+        @Html.ActionLink("Zarządzaj kategoriami", "ManageCategories", "Forum");
+    }
+    }
+@{ 
+
+    foreach (Studnet.Models.forum forum in Model)
     {
         <h3>@forum.forum_name</h3>
-        @Html.ActionLink("Dodaj temat", "AddThread", "Forum", new { forum_id = forum.Id }, null);
+        @Html.ActionLink("Dodaj temat", "AddThread", "Forum", new { forum_id = forum.Id }, null)
         <br /><br />
+        foreach (var category in (List<Studnet.Models.forum_topic_category>)ViewBag.Categories)
+        {
+            List<Studnet.Models.forum_topic> categoryTopics = forum.forum_topic.Where(m => m.forum_topic_category_id == category.Id).ToList();
+            if (categoryTopics.Count > 0)
+            {
+                        <h4><b>@category.forum_topic_category_name</b></h4>
+
         <table style="border-collapse: separate; border-spacing: 50px 0;">
             <tr>
                 <th scope="col">Temat</th>
@@ -18,8 +33,7 @@
                 <th scope="col">Ilość odpowiedzi</th>
                 <th scope="col">Ostatnia odpowiedź</th>
             </tr>
-
-            @{ foreach (var topic in forum.forum_topic)
+            @{ foreach (var topic in categoryTopics)
                 {
                     <tr>
                         <td style="padding: 10px 0">@Html.ActionLink(topic.forum_topic_title, "SeeThread", "Forum", new { thread_id = topic.Id }, null)</td>
@@ -27,7 +41,7 @@
                         <td style="padding: 10px 0">@topic.forum_topic_date_created.ToString("dd.MM.yyyy")</td>
                         <td style="padding: 10px 0">@topic.forum_topic_reply.Count.ToString()</td>
                         @{ 
-                            if(topic.forum_topic_reply.Count == 0)
+                            if (topic.forum_topic_reply.Count == 0)
                             {
                                 <td>-</td>
                             }
@@ -37,8 +51,13 @@
                             }
                         }
                     </tr>
-               }
+                            }
              }
+
+                            
         </table>
-    }
-}
+                                    }
+                                }
+                            }
+                            }
+                            

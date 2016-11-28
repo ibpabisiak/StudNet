@@ -28,13 +28,23 @@
     }
 }
 
+@{
+    if (ViewBag.Style != null)
+    {
+        @MvcHtmlString.Create(HttpUtility.HtmlDecode(ViewBag.Style))
+    }
+}
+
+
 <h2>Register new user</h2>
 
 <form method="post" id="reg">
     @{ 
         if (ViewBag.Error != null)
         {
-            <font color="red"><b>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje</b></font>
+            <font color="red"><b>
+    Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje
+    <br />@ViewBag.Error</b></font>
         }
     }
     <div class="form-group">

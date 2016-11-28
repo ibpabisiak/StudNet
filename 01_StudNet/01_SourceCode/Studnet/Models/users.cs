@@ -15,8 +15,6 @@ namespace Studnet.Models
             forum_topic_reply = new HashSet<forum_topic_reply>();
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -51,12 +49,15 @@ namespace Studnet.Models
         [Column(TypeName = "date")]
         public DateTime user_date_created { get; set; }
 
+        public int user_rank_id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<forum_topic> forum_topic { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<forum_topic_reply> forum_topic_reply { get; set; }
 
+        public virtual rank rank { get; set; }
         public string GetFullName()
         {
             return user_name + " " + user_surname;

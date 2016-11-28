@@ -38,14 +38,96 @@ namespace Studnet.Controllers.User
         {
             try
             {
+                //walidacja danych 
+                Regex regex;
+                regex = new Regex(@"^(?=.*)[a-zA-ZęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{1,12}$");
+
+                // data validation
+                if (this.validatePassword(user.user_password) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_password\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Hasło nie spełnia kryteriów bezpieczeństwa");
+                }
+                if (regex.IsMatch(user.user_name) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_name\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Imię może składać się tylko z liter oraz polskich znaków. Długość to 1-12 znaków.");
+                }
+                if (user.user_address_street.Length < 1 || user.user_address_street.Length > 32)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_address_street\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Nazwa ulicy przekracza dozwoloną ilość znaków (32)");
+                }
+                regex = new Regex(@"^(?=.*)[a-zA-ZęąśżźćńłóĘĄŚŻŹĆŃŁÓ]{1,}$");
+                if (regex.IsMatch(user.user_address_city))
+                {
+                    user.user_address_city = user.user_address_city.First().ToString().ToUpper() + user.user_address_city.Substring(1); // first letter to upper
+                }
+                else
+                {
+                    ViewBag.Style = "<style>input[name=\"user_address_city\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Miasto to tylko litery oraz polskie znaki.");
+                }
+                if (user.user_semester < 0 || user.user_semester > 9)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_semester\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Dozwolone znaki w semestrze to to 0-9");
+                }
+                if (int.Parse(user.user_address_home_number) < 0 || int.Parse(user.user_address_home_number) > 9)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_address_home_number\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Numer domu to tylko cyfry 0-9");
+                }
+
+                if (user.user_study_year < 0 || user.user_study_year > 9)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_study_year\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Rok studiów to tylko cyfry 0-9");
+                }
+
+                regex = new Regex(@"^(?<=.*)[\d]{1,5}$");
+                if (regex.IsMatch(user.user_index.ToString()) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_index\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Numer indeksu to 1-5 znaków, same cyfry");
+                }
+
+                //walidacja email
+                try
+                {
+                    MailAddress m = new MailAddress(user.user_mail);
+                }
+                catch (FormatException)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_mail\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Niewłaściwy format adresu email");
+                }
+                //email - ucinanie od plusa
+                string temp;
+                if (user.user_mail.IndexOf("+") != -1)
+                {
+                    temp = user.user_mail.Substring(0, user.user_mail.IndexOf("+"));
+                    temp += user.user_mail.Substring(user.user_mail.IndexOf("@"));
+                    user.user_mail = temp;
+                }
+
+                regex = new Regex(@"^(?=.*)[a-zA-ZęąśżźćńłóĘĄŚŻŹĆŃŁÓ-]{1,24}$");
+                if (regex.IsMatch(user.user_surname) == false)
+                {
+                    ViewBag.Style = "<style>input[name=\"user_surname\"] {background-color: #fc0000;}</style>";
+                    throw new Exception("Nazwisko to tylko litery, polskie znaki i \"-\". Długość to 1-24 znaki.");
+                }
+
+
+
+
                 if (user.user_password != password_repeat)
                 {
                     throw new Exception("Podane hasła nie pasują do siebie");
                 }
                 else
                 {
-                    AppData.Instance().StudnetDatabase
-                        .UserManagement.AddUser(user);
+                    AppData.Instance().StudnetDatabase.UserManagement.AddUser(user);
 
                     // send verification mail
 
@@ -61,8 +143,17 @@ namespace Studnet.Controllers.User
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
                 ViewBag.Error = ex.Message;
+                Debug.WriteLine(ex);
+                try
+                {
+                    AppData.Instance().StudnetDatabase.UserManagement.RemoveUser(user);
+                }
+                catch(Exception ex1)
+                {
+                    Debug.WriteLine(ex1);
+                    ViewBag.Error = ex1.Message;
+                }
                 return View(user);
             }
         }
@@ -199,14 +290,23 @@ namespace Studnet.Controllers.User
                 string hashedDateTime = hasher.HashPasswordCaesar(controlSum.ToString() + ":" + now.ToString("dd:MM:yyyy:H:mm"));
                 if (hashedDateTime != "")
                 {
-                    UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
-                    string url = AppData.Instance().WebsiteAdress + urlHelper.Action("ResetPassword", "User", new { dateTime = hashedDateTime, user_mail = hasher.HashPasswordCaesar(user_mail) });
-                    AppData.Instance().StudnetDatabase
-                        .UserManagement.SendEmailToUser(user_mail, "Resetowanie hasła", "Witaj, \n" +
-                        "Otrzymaliśmy polecenie zresetowania Twojego hasła. Jeśli chcesz zresetować hasło, wejdź w link podany poniżej. \n" +
-                        url + "\n Jeśli to polecenie nie pochodzi od Ciebie, zignoruj tą wiadomośc. \n Pozdrawiamy, \n Zespół StudNet");
+                    try
+                    {
+                        UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
+                        string url = AppData.Instance().WebsiteAdress + urlHelper.Action("ResetPassword", "User", new { dateTime = hashedDateTime, user_mail = hasher.HashPasswordCaesar(user_mail) });
+                        AppData.Instance().StudnetDatabase
+                            .UserManagement.SendEmailToUser(user_mail, "Resetowanie hasła", "Witaj, \n" +
+                            "Otrzymaliśmy polecenie zresetowania Twojego hasła. Jeśli chcesz zresetować hasło, wejdź w link podany poniżej. \n" +
+                            url + "\n Jeśli to polecenie nie pochodzi od Ciebie, zignoruj tą wiadomośc. \n Pozdrawiamy, \n Zespół StudNet");
 
-                    return View("PostForgotPassword");
+                        return View("PostForgotPassword");
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                        ViewBag.Error = ex.Message;
+                        return View();
+                    }
                 }
                 else
                 {
@@ -240,6 +340,7 @@ namespace Studnet.Controllers.User
                 Session["IsLogged"] = true;
                 Session.Add("User", loggedUser.user_mail);
                 Session.Add("Username", loggedUser.GetFullName());
+                Session.Add("Rank", loggedUser.rank.rank_name);
                 return RedirectToAction("Index", "MainPage");
             }
             catch (Exception ex)
