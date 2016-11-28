@@ -18,8 +18,8 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <table id="suiteSummaryTable" class="selenium">
 <thead><tr class="failed"><td>Test Suite: Testy</td></tr></thead>
 <tbody>
-<tr><td>Test cases: 15 total / <span class="passed">11</span> passed / <span class="failed">4</span> failed</td></tr>
-<tr><td>Commands: 197 total / <span class="passed">193</span> passed / <span class="failed">4</span> failed / <span class="skipped">0</span> skipped</td></tr>
+<tr><td>Test cases: 15 total / <span class="passed">12</span> passed / <span class="failed">3</span> failed</td></tr>
+<tr><td>Commands: 197 total / <span class="passed">194</span> passed / <span class="failed">3</span> failed / <span class="skipped">0</span> skipped</td></tr>
 </tbody></table><br>
 <table id="suiteTable" class="selenium">
 <thead><tr><td>Index of test cases</td></tr></thead>
@@ -30,7 +30,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="failed"><td><a href="#test3">TestRejestracji_04</a></td></tr>
 <tr class="passed"><td><a href="#test4">TestRejestracji_05</a></td></tr>
 <tr class="failed"><td><a href="#test5">TestRejestracji_06</a></td></tr>
-<tr class="failed"><td><a href="#test6">TestRejestracji_07</a></td></tr>
+<tr class="passed"><td><a href="#test6">TestRejestracji_07</a></td></tr>
 <tr class="passed"><td><a href="#test7">TestRejestracji_08</a></td></tr>
 <tr class="failed"><td><a href="#test8">TestRejestracji_09</a></td></tr>
 <tr class="done"><td><a href="#test9">TestLogowania_01</a></td></tr>
@@ -111,13 +111,13 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
 	<td>name=password_repeat</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -130,7 +130,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 	<td>verifyText</td>
 	<td>css=h2</td>
 	<td>Zarejestrowano</td>
-	<td></td>
+	<td>Actual value 'Register new user' did not match 'Zarejestrowano'</td>
 </tr>
 
 </tbody></table>
@@ -204,13 +204,13 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>alamakota123</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
 	<td>name=password_repeat</td>
-	<td>alamakota123</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -297,13 +297,13 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>1234561@#</td>
+	<td>12345611234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
 	<td>name=password_repeat</td>
-	<td>1234561@#</td>
+	<td>12345611234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -390,13 +390,13 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
 	<td>name=password_repeat</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -483,7 +483,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -500,9 +500,9 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 </tr>
 <tr class="passed">
 	<td>verifyText</td>
-	<td>css=b</td>
-	<td>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje</td>
-	<td></td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td>Actual value 'Zarejestrowano' did not match 'Register new user'</td>
 </tr>
 
 </tbody></table>
@@ -576,13 +576,13 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
 	<td>name=password_repeat</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -593,8 +593,8 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 </tr>
 <tr class="failed">
 	<td>verifyText</td>
-	<td>css=b</td>
-	<td>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
 	<td>Element css=b not found</td>
 </tr>
 
@@ -669,13 +669,13 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
 	<td>name=password_repeat</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -684,11 +684,11 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 	<td></td>
 	<td></td>
 </tr>
-<tr class="failed">
+<tr class="passed">
 	<td>verifyText</td>
-	<td>css=b</td>
-	<td>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje</td>
-	<td>Element css=b not found</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td></td>
 </tr>
 
 </tbody></table>
@@ -762,13 +762,13 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
 	<td>name=password_repeat</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -779,8 +779,8 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 </tr>
 <tr class="passed">
 	<td>verifyText</td>
-	<td>css=b</td>
-	<td>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
 	<td></td>
 </tr>
 
@@ -855,13 +855,13 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 <tr class="done">
 	<td>type</td>
 	<td>name=user_password</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
 	<td>name=password_repeat</td>
-	<td>1234561@#</td>
+	<td>1234561@#aA</td>
 	<td></td>
 </tr>
 <tr class="done">
@@ -872,9 +872,9 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 </tr>
 <tr class="failed">
 	<td>verifyText</td>
-	<td>css=b</td>
-	<td>Podane dane są nieprawidłowe. Upewnij się, że podałeś poprawne informacje</td>
-	<td>Element css=b not found</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td>Actual value 'Zarejestrowano' did not match 'Register new user'</td>
 </tr>
 
 </tbody></table>
@@ -1066,7 +1066,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 	<td>verifyText</td>
 	<td>css=h2</td>
 	<td>Forum glówne - Testowa nazwa6</td>
-	<td>Actual value 'Forum glówne - dodaj temat' did not match 'Forum glówne - Testowa nazwa6'</td>
+	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
@@ -1084,7 +1084,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 	<td>verifyText</td>
 	<td>//tr[6]/td</td>
 	<td>Testowa odpowiedz</td>
-	<td>Element //tr[6]/td not found</td>
+	<td></td>
 </tr>
 <tr class="done">
 	<td>clickAndWait</td>
@@ -1117,7 +1117,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 	<td>clickAndWait</td>
 	<td>link=Logowanie</td>
 	<td></td>
-	<td>Element link=Logowanie not found</td>
+	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
@@ -1171,7 +1171,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 	<td>verifyText</td>
 	<td>css=b</td>
 	<td>Temat o podanej nazwie już istnieje!</td>
-	<td>Actual value 'Temat o podanej nazwie już istnieje!' did not match 'Nazwa tematu musi zawierać co najmniej dwa znaki'</td>
+	<td></td>
 </tr>
 <tr class="done">
 	<td>click</td>
@@ -1198,7 +1198,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 	<td>clickAndWait</td>
 	<td>link=Logowanie</td>
 	<td></td>
-	<td>Element link=Logowanie not found</td>
+	<td></td>
 </tr>
 <tr class="done">
 	<td>type</td>
@@ -1252,7 +1252,7 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 	<td>verifyText</td>
 	<td>css=b</td>
 	<td>Nazwa tematu musi zawierać co najmniej dwa znaki</td>
-	<td>Actual value 'Nazwa tematu musi zawierać co najmniej dwa znaki' did not match 'Temat o podanej nazwie już istnieje!'</td>
+	<td></td>
 </tr>
 <tr class="done">
 	<td>click</td>
