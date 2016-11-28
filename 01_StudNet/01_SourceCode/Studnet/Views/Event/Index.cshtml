@@ -8,19 +8,22 @@
 <head>
     <title>@ViewBag.Title - StudNet</title>
     <meta charset='utf-8' />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     <link href='/Content/Calendar/fullcalendar.css' rel='stylesheet' />
     <link href='/Content/Calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
     <script src='/Content/Calendar/lib/moment.min.js'></script>
     <script src='/Content/Calendar/lib/jquery.min.js'></script>
     <script src='/Content/Calendar/fullcalendar.js'></script>
     <script src='~/Content/Calendar/locale/pl.js'></script>
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script>
 
 	$(document).ready(function() {
 
-	    $('#calendar').fullCalendar({
+	    $('#calendar1').fullCalendar({
 			defaultDate: "@DateTime.Now.ToString("yyyy-MM-dd")",
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
@@ -100,7 +103,7 @@
             {
             @Html.ActionLink("Dodaj wydarzenie", "AddEvent", "Event")
         }
-        <div id="calendar"></div>
+        <div id="calendar1"></div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - StudNet | @Html.ActionLink("O serwisie", "About", "MainPage")</p>
