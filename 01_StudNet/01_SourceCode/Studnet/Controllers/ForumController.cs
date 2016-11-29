@@ -136,7 +136,7 @@ namespace Studnet.Controllers
                 try
                 {
                     AppData.Instance().StudnetDatabase.AddRecordToTable(StudnetDatabase.TableType.Forum, newForum);
-                    return View("Index");
+                    return RedirectToAction("Index", "Forum");
                 }
                 catch (Exception ex)
                 {
