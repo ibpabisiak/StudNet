@@ -116,14 +116,16 @@ namespace Studnet.Controllers.User
                 }
 
                 //walidacja email
-                try
-                {
-                    MailAddress m = new MailAddress(user.user_mail);
-                }
-                catch (FormatException)
+                string validEmailPattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
++ @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
++ @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+                regex = new Regex(validEmailPattern, RegexOptions.IgnoreCase);
+
+
+                if (regex.IsMatch(user.user_mail) == false)
                 {
                     ViewBag.Style = "<style>input[name=\"user_mail\"] {background-color: #fc0000;}</style>";
-                    throw new Exception("Niewłaściwy format adresu email");
+                    throw new Exception("Błędny adres email");
                 }
                 //email - ucinanie od plusa
                 string temp;
@@ -161,6 +163,7 @@ namespace Studnet.Controllers.User
                             "Aby zweryfikować adres e-mail wejdź pod adres \n" +
                             url + "\nPozdrawiamy,\n" +
                             "Zespół StudNet");
+                    AppData.Instance().StudnetDatabase.UserManagement.AddUser(user);
                     return View("PostRegister");
                 }
             }
