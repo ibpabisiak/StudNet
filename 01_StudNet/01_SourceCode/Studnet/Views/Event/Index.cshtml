@@ -27,10 +27,16 @@
 			defaultDate: "@DateTime.Now.ToString("yyyy-MM-dd")",
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
+			dayClick: function(date, jsEvent, view) {
+                @if (Session["Rank"].ToString().Contains("admin"))
+                    {
+                        @:window.location.href = "/Event/AddEvent?dateClicked=" + date.format();
+                    }
+                },
 			events: [
                 @foreach (var ev in Model)
                 {
-                    @:{ 
+                    @:{
                     @:id: '@ev.Id',
                     @:title: '@ev.event_title',
                     @:url: '/Event/SeeEvent?eventId=@ev.Id',
@@ -75,6 +81,7 @@
                         {
                             <li>@Html.ActionLink("Forum", "Index", "Forum")</li>
                             <li>@Html.ActionLink("Kalendarz wydarzeń", "Index", "Event")</li>
+                            <li>@Html.ActionLink("Wiadomości", "Index", "Message")</li>
                         }
                     }
                 </ul>
@@ -99,10 +106,6 @@
     <div class="container body-content">
         <h2>@ViewBag.Title</h2>
         <br />
-        @if (Session["Rank"].ToString().Contains("admin"))
-            {
-            @Html.ActionLink("Dodaj wydarzenie", "AddEvent", "Event")
-        }
         <div id="calendar1"></div>
         <hr />
         <footer>

@@ -31,10 +31,18 @@ namespace Studnet.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddEvent()
+        public ActionResult AddEvent(string dateClicked = null)
         {
             if ((bool)Session["IsLogged"])
             {
+                if (dateClicked != null)
+                {
+                    ViewBag.DateSelected = DateTime.Parse(dateClicked);
+                }
+                else
+                {
+                    ViewBag.DateSelected = DateTime.Now;
+                }
                 if (Session["Rank"].ToString().Contains("admin"))
                 {
                     return View();
@@ -71,26 +79,31 @@ namespace Studnet.Controllers
                 if (newEvent.event_description == null || newEvent.event_description.Length <= 2)
                 {
                     ViewBag.Error = "Opis wydarzenia musi zawierać co najmniej 3 znaki";
+                    ViewBag.DateSelected = newEvent.event_start;
                     return View();
                 }
                 else if (newEvent.event_title == null || newEvent.event_title.Length <= 2)
                 {
                     ViewBag.Error = "Tytuł wydarzenia musi zawierać co najmniej 3 znaki";
+                    ViewBag.DateSelected = newEvent.event_start;
                     return View();
                 }
                 else if (newEvent.event_start == null)
                 {
                     ViewBag.Error = "Data rozpoczęcia nie może być pusta";
+                    ViewBag.DateSelected = DateTime.Now;
                     return View();
                 }
                 else if (newEvent.event_end == null)
                 {
                     ViewBag.Error = "Data zakończenia nie może być pusta";
+                    ViewBag.DateSelected = newEvent.event_start;
                     return View();
                 }
                 else if (newEvent.event_end.CompareTo(newEvent.event_start) <= 0)
                 {
                     ViewBag.Error = "Wydarzenie nie może mieć zerowego ani ujemnego czasu trwania";
+                    ViewBag.DateSelected = newEvent.event_start;
                     return View();
                 }
                 else

@@ -22,11 +22,11 @@
         </div>
         <div class="form-group">
             <label for="event_start">Data rozpoczęcia</label>
-            <input type="datetime-local" name="event_start" value="@DateTime.Now.ToString("yyy-MM-ddTHH:mm")" class="form-control" />
+            <input type="datetime-local" name="event_start" value="@ViewBag.DateSelected.ToString("yyy-MM-ddTHH:mm")" class="form-control" />
         </div>
         <div class="form-group">
             <label for="event_end">Data zakończenia</label>
-            <input type="datetime-local" name="event_end" value="@DateTime.Now.AddHours(1).ToString("yyy-MM-ddTHH:mm")" class="form-control" />
+            <input type="datetime-local" name="event_end" value="@ViewBag.DateSelected.AddHours(1).ToString("yyy-MM-ddTHH:mm")" class="form-control" />
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-default" value="Zapisz" />
