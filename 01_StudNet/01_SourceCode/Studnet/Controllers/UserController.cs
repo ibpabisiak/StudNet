@@ -152,7 +152,7 @@ namespace Studnet.Controllers.User
                 }
                 else
                 {
-                    AppData.Instance().StudnetDatabase.UserManagement.AddUser(user);
+                    //AppData.Instance().StudnetDatabase.UserManagement.AddUser(user);
 
                     // send verification mail
 
