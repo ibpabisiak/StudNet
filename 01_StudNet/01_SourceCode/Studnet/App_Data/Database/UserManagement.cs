@@ -36,6 +36,7 @@ namespace Studnet
                 {
                     user.user_password = passwordHasher.HashPasswordMD5(user.user_password);
                     user.user_date_created = DateTime.Now;
+                    user.rank = AppData.Instance().StudnetDatabase.rank.Where(m => m.rank_name.ToLower() == "user").Single();
                     AppData.Instance().StudnetDatabase.AddRecordToTable(StudnetDatabase.TableType.Users, user);
                 }
             }

@@ -1,0 +1,53 @@
+﻿@model List<Studnet.Models.message>
+@{
+    int conversedUser = -1;
+    
+    ViewBag.Title = "Wiadomości";
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("Utwórz wiadomość", "Create", "Message")
+<table style="border-collapse: separate; border-spacing: 50px 0;">
+    <tr>
+        <th scope="col">Konwersacja z:</th>
+        <th scope="col">Ostatnia wiadomość od:</th>
+        <th scope="col">Treść wiadomości:</th>
+        <th scope="col">Czas wysłania:</th>
+    </tr>
+    @foreach (var item in (List<Studnet.Models.message>)Model)
+    {
+        if (item.message_user_to_id == (int)ViewBag.CurrentUser)
+        {
+            conversedUser = item.users.Id;
+        }
+        else
+        {
+            conversedUser = item.users1.Id;
+        }
+        <tr onclick="location.href = '@(Url.Action("Read", "Message", new { userId = conversedUser }))'">
+
+            @if (item.message_user_to_id == (int)ViewBag.CurrentUser && !item.message_is_read)
+            {
+
+                <td style="padding: 10px 0"><b>@item.users.GetFullName()</b></td>
+                <td style="padding: 10px 0"><b>@item.users.GetFullName()</b></td>
+                <td style="padding: 10px 0"><b>@(item.message_text.Length >= 11? item.message_text.Substring(0,10) + "...":item.message_text)</b></td>
+                <td style="padding: 10px 0"><b>@item.message_date_created.ToString("MM:dd:yyyy hh:mm:ss")</b></td>
+            }
+            else
+            {
+                if (item.message_user_to_id == (int)ViewBag.CurrentUser)
+                {
+                    <td style="padding: 10px 0">@item.users.GetFullName()</td>
+                }
+                else
+                {
+                    <td style="padding: 10px 0">@item.users1.GetFullName()</td>
+                }
+                <td style="padding: 10px 0">@item.users.GetFullName()</td>
+                <td style="padding: 10px 0">@(item.message_text.Length >= 11 ? item.message_text.Substring(0, 10) + "..." : item.message_text)</td>
+                <td style="padding: 10px 0">@item.message_date_created.ToString("MM:dd:yyyy hh:mm:ss")</td>
+            }
+        </tr>
+    }
+</table>

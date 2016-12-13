@@ -1,0 +1,54 @@
+﻿@model Studnet.Models._event
+@{
+    ViewBag.Title = "Podgląd wydarzenia";
+}
+
+<h2>@ViewBag.Title - @Model.event_title</h2>
+@Html.ActionLink("<- Powrót", "Index", "Event")
+<br /><br />
+@if (Session["Rank"].ToString().Contains("admin"))
+{
+    <form action="/Event/EditEvent" method="post">
+        @{
+            if (ViewBag.Error != null)
+            {
+                <font color="red"><b>@ViewBag.Error</b></font>
+            }
+        }
+        <input type="hidden" name="Id" value="@Model.Id"/>
+        <div class="form-group">
+            <label for="event_title">Tytuł wydarzenia:</label>
+            <input type="text" name="event_title" value="@Model.event_title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="event_description">Opis wydarzenia:</label>
+            <textarea cols="40" rows="5" name="event_description"  class="form-control" >@Model.event_description</textarea>
+        </div>
+        <div class="form-group">
+            <label for="event_start">Data rozpoczęcia</label>
+            <input type="datetime-local" name="event_start" value="@Model.event_start.ToString("yyy-MM-ddTHH:mm")" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="event_end">Data zakończenia</label>
+            <input type="datetime-local" name="event_end" value="@Model.event_end.ToString("yyy-MM-ddTHH:mm")" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Zapisz" />
+        </div>
+    </form>
+    <form action="/Event/RemoveEvent" method="post">
+        <input type="hidden" name="eventId" value="@Model.Id"/>
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Usuń wydarzenie" />
+        </div>
+    </form>
+            }
+            else
+            {
+<font size="4">
+    <b>Nazwa wydarzenia:</b>&nbsp; @Model.event_title<br />
+    <b>Opis wydarzenia: </b>&nbsp;&nbsp; @Model.event_description<br />
+    <b>Data rozpoczęcia:</b>&nbsp; @Model.event_start<br />
+    <b>Data zakończenia:</b>&nbsp; @Model.event_end<br />
+</font>
+}

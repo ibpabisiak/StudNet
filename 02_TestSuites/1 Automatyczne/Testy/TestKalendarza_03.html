@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:29489/" />
+<title>TestKalendarza_03</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TestKalendarza_03</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Kalendarz wydarzeń</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/Event/AddEvent?dateClicked=2016-12-15</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=event_title</td>
+	<td>testowy tyt</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=event_description</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=event_start</td>
+	<td>2016-11-28T23:25</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=event_end</td>
+	<td>2016-11-29T00:29</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Opis wydarzenia musi zawierać co najmniej 3 znaki</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

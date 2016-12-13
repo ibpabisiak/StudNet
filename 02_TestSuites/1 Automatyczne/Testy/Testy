@@ -23,6 +23,16 @@
 <tr><td><a href="TestForum_01.html">TestForum_01</a></td></tr>
 <tr><td><a href="TestForum_02.html">TestForum_02</a></td></tr>
 <tr><td><a href="TestForum_03.html">TestForum_03</a></td></tr>
+<tr><td><a href="TestZmianyHasła_01.html">TestZmianyHasła_01</a></td></tr>
+<tr><td><a href="TestZmianyHasła_02.html">TestZmianyHasła_02</a></td></tr>
+<tr><td><a href="TestZmianyHasła_03.html">TestZmianyHasła_03</a></td></tr>
+<tr><td><a href="TestKalendarza_01.html">TestKalendarza_01</a></td></tr>
+<tr><td><a href="TestKalendarza_02.html">TestKalendarza_02</a></td></tr>
+<tr><td><a href="TestKalendarza_03.html">TestKalendarza_03</a></td></tr>
+<tr><td><a href="TestKalendarza_04.html">TestKalendarza_04</a></td></tr>
+<tr><td><a href="TestWiadomosci_01.html">TestWiadomosci_01</a></td></tr>
+<tr><td><a href="TestWiadomosci_02.html">TestWiadomosci_02</a></td></tr>
+<tr><td><a href="TestWiadomosci_03.html">TestWiadomosci_03</a></td></tr>
 </tbody></table>
 </body>
 </html>

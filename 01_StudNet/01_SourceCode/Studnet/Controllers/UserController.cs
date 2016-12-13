@@ -152,7 +152,7 @@ namespace Studnet.Controllers.User
                 }
                 else
                 {
-
+                    //AppData.Instance().StudnetDatabase.UserManagement.AddUser(user);
 
                     // send verification mail
 
@@ -169,8 +169,8 @@ namespace Studnet.Controllers.User
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
                 ViewBag.Error = ex.Message;
+                Debug.WriteLine(ex);
                 return View(user);
             }
         }
@@ -307,14 +307,23 @@ namespace Studnet.Controllers.User
                 string hashedDateTime = hasher.HashPasswordCaesar(controlSum.ToString() + ":" + now.ToString("dd:MM:yyyy:H:mm"));
                 if (hashedDateTime != "")
                 {
-                    UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
-                    string url = AppData.Instance().WebsiteAdress + urlHelper.Action("ResetPassword", "User", new { dateTime = hashedDateTime, user_mail = hasher.HashPasswordCaesar(user_mail) });
-                    AppData.Instance().StudnetDatabase
-                        .UserManagement.SendEmailToUser(user_mail, "Resetowanie hasła", "Witaj, \n" +
-                        "Otrzymaliśmy polecenie zresetowania Twojego hasła. Jeśli chcesz zresetować hasło, wejdź w link podany poniżej. \n" +
-                        url + "\n Jeśli to polecenie nie pochodzi od Ciebie, zignoruj tą wiadomośc. \n Pozdrawiamy, \n Zespół StudNet");
+                    try
+                    {
+                        UrlHelper urlHelper = new UrlHelper(this.ControllerContext.RequestContext);
+                        string url = AppData.Instance().WebsiteAdress + urlHelper.Action("ResetPassword", "User", new { dateTime = hashedDateTime, user_mail = hasher.HashPasswordCaesar(user_mail) });
+                        AppData.Instance().StudnetDatabase
+                            .UserManagement.SendEmailToUser(user_mail, "Resetowanie hasła", "Witaj, \n" +
+                            "Otrzymaliśmy polecenie zresetowania Twojego hasła. Jeśli chcesz zresetować hasło, wejdź w link podany poniżej. \n" +
+                            url + "\n Jeśli to polecenie nie pochodzi od Ciebie, zignoruj tą wiadomośc. \n Pozdrawiamy, \n Zespół StudNet");
 
-                    return View("PostForgotPassword");
+                        return View("PostForgotPassword");
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                        ViewBag.Error = ex.Message;
+                        return View();
+                    }
                 }
                 else
                 {
@@ -348,6 +357,7 @@ namespace Studnet.Controllers.User
                 Session["IsLogged"] = true;
                 Session.Add("User", loggedUser.user_mail);
                 Session.Add("Username", loggedUser.GetFullName());
+                Session.Add("Rank", loggedUser.rank.rank_name);
                 return RedirectToAction("Index", "MainPage");
             }
             catch (Exception ex)

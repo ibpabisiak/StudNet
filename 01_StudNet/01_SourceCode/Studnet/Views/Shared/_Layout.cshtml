@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>@ViewBag.Title - StudNet</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,8 +31,20 @@
                         else
                         {
                             <li>@Html.ActionLink("Forum", "Index", "Forum")</li>
+                            <li>@Html.ActionLink("Kalendarz wydarzeń", "Index", "Event")</li>
+                            string userMail = Session["User"].ToString();
+                            int userId = AppData.Instance().StudnetDatabase.users.Where(u => u.user_mail == userMail).Single().Id;
+                            int newMessages = AppData.Instance().StudnetDatabase.message.Where(m => m.message_user_to_id == userId).Count(m => m.message_is_read == false);
+                            if (newMessages > 0)
+                            {
+                            <li>@Html.ActionLink("Wiadomości (" + newMessages.ToString() + ")", "Index", "Message")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Wiadomości", "Index", "Message")</li>
+                            }
                         }
-                    }         
+                    }
                 </ul>
                 @{
                     if ((bool)Session["IsLogged"])
@@ -41,18 +53,19 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="False">@Session["Username"]<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Zmień hasło","ChangePassword","User")</li>
+                                    <li>@Html.ActionLink("Zmień hasło", "ChangePassword", "User")</li>
                                     <li>@Html.ActionLink("Wyloguj", "Logout", "User")</li>
                                 </ul>
                             </li>
                         </ul>
-                        
+
                     }
                 }
             </div>
         </div>
     </div>
     <div class="container body-content">
+        
         @RenderBody()
         <hr />
         <footer>

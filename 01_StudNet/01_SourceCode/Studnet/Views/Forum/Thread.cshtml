@@ -22,7 +22,7 @@
                     foreach (var reply in Model.forum_topic_reply)
                     {
                         <tr>
-                            <th>@reply.users.GetFullName()</th>
+                            <th>@reply.users.GetFullName() @Html.ActionLink("Wiadomość", "Create","Message",new { userToId = reply.users.Id, preMessage = reply.forum_topic_reply_content },null)</th>
                             <th>&nbsp</th>
                             <th style="float:right">@reply.forum_topic_reply_date_created.ToString("dd.MM.yyyy")</th>
                         </tr>

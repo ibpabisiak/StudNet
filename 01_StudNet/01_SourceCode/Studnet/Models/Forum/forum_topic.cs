@@ -13,7 +13,6 @@ namespace Studnet.Models
         {
             forum_topic_reply = new HashSet<forum_topic_reply>();
         }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -28,6 +27,8 @@ namespace Studnet.Models
         public DateTime forum_topic_date_created { get; set; }
 
         public int forum_id { get; set; }
+
+        public int forum_topic_category_id { get; set; }
 
         public virtual forum forum { get; set; }
 

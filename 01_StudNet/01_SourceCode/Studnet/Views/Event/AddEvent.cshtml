@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Dodaj wydarzenie";
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("<- Powrót", "Index", "Event")
+<br /><br />
+    <form method="post">
+        @{
+            if (ViewBag.Error != null)
+            {
+                <font color="red"><b>@ViewBag.Error</b></font>
+            }
+        }
+        <div class="form-group">
+            <label for="event_title">Tytuł wydarzenia:</label>
+            <input type="text" name="event_title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="event_description">Opis wydarzenia:</label>
+            <textarea cols="40" rows="5" name="event_description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="event_start">Data rozpoczęcia</label>
+            <input type="datetime-local" name="event_start" value="@ViewBag.DateSelected.ToString("yyy-MM-ddTHH:mm")" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="event_end">Data zakończenia</label>
+            <input type="datetime-local" name="event_end" value="@ViewBag.DateSelected.AddHours(1).ToString("yyy-MM-ddTHH:mm")" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Zapisz" />
+        </div>
+    </form>

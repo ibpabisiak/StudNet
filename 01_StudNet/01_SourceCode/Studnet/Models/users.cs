@@ -13,10 +13,10 @@ namespace Studnet.Models
         {
             forum_topic = new HashSet<forum_topic>();
             forum_topic_reply = new HashSet<forum_topic_reply>();
+            message = new HashSet<message>();
+            message1 = new HashSet<message>();
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -51,11 +51,21 @@ namespace Studnet.Models
         [Column(TypeName = "date")]
         public DateTime user_date_created { get; set; }
 
+        public int user_rank_id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<forum_topic> forum_topic { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<forum_topic_reply> forum_topic_reply { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<message> message { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<message> message1 { get; set; }
+
+        public virtual rank rank { get; set; }
 
         public string GetFullName()
         {

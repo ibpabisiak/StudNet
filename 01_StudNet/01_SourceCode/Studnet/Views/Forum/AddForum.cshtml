@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Dodaj forum";
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("<- Powrót", "Index", "Forum");
+
+<form method="post">
+    @{
+        if (ViewBag.Error != null)
+        {
+            <font color="red"><b>@ViewBag.Error</b></font>
+        }
+    }
+    <div class="form-group">
+        <label for="forum_name">Nazwa forum:</label>
+        <input type="text" name="forum_name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Utwórz forum" />
+    </div>
+</form>
+

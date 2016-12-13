@@ -1,0 +1,117 @@
+﻿@model List<Studnet.Models._event>
+@{
+    Layout = null;
+    ViewBag.Title = "Kalendarz wydarzeń";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - StudNet</title>
+    <meta charset='utf-8' />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link href='/Content/Calendar/fullcalendar.css' rel='stylesheet' />
+    <link href='/Content/Calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <script src='/Content/Calendar/lib/moment.min.js'></script>
+    <script src='/Content/Calendar/lib/jquery.min.js'></script>
+    <script src='/Content/Calendar/fullcalendar.js'></script>
+    <script src='~/Content/Calendar/locale/pl.js'></script>
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script>
+
+	$(document).ready(function() {
+
+	    $('#calendar1').fullCalendar({
+			defaultDate: "@DateTime.Now.ToString("yyyy-MM-dd")",
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			dayClick: function(date, jsEvent, view) {
+                @if (Session["Rank"].ToString().Contains("admin"))
+                    {
+                        @:window.location.href = "/Event/AddEvent?dateClicked=" + date.format();
+                    }
+                },
+			events: [
+                @foreach (var ev in Model)
+                {
+                    @:{
+                    @:id: '@ev.Id',
+                    @:title: '@ev.event_title',
+                    @:url: '/Event/SeeEvent?eventId=@ev.Id',
+                    @:start: '@ev.event_start.ToString("yyyy-MM-ddTHH:mm:ss")',
+                    @:end: '@ev.event_end.ToString("yyyy-MM-ddTHH:mm:ss")'
+                    @:},
+                }
+			]
+		});
+
+	});
+
+    </script>
+    <style>
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("StudNet", "Index", "MainPage", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Strona główna", "Index", "MainPage")</li>
+                    @{
+                        if (!(bool)Session["IsLogged"])
+                        {
+                            <li>@Html.ActionLink("Rejestracja", "Register", "User")</li>
+                            <li>@Html.ActionLink("Logowanie", "Login", "User")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Forum", "Index", "Forum")</li>
+                            <li>@Html.ActionLink("Kalendarz wydarzeń", "Index", "Event")</li>
+                            <li>@Html.ActionLink("Wiadomości", "Index", "Message")</li>
+                        }
+                    }
+                </ul>
+                @{
+                    if ((bool)Session["IsLogged"])
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="False">@Session["Username"]<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Zmień hasło", "ChangePassword", "User")</li>
+                                    <li>@Html.ActionLink("Wyloguj", "Logout", "User")</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <h2>@ViewBag.Title</h2>
+        <br />
+        <div id="calendar1"></div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - StudNet | @Html.ActionLink("O serwisie", "About", "MainPage")</p>
+        </footer>
+    </div>
+
+</body>
+</html>
