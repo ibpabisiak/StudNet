@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:29489/" />
-<title>TestKalendarza_01</title>
+<title>TestWiadomosci_03</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">TestKalendarza_01</td></tr>
+<tr><td rowspan="1" colspan="3">TestWiadomosci_03</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -38,33 +38,13 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Kalendarz wydarzeń</td>
+	<td>link=Wiadomości (2)</td>
 	<td></td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>/Event/AddEvent?dateClicked=2016-12-15</td>
+	<td>clickAndWait</td>
+	<td>css=td</td>
 	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=event_title</td>
-	<td>testowy tyt</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=event_description</td>
-	<td>testowy opis</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=event_start</td>
-	<td>2016-11-28T23:25</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=event_end</td>
-	<td>2016-11-29T00:29</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -72,8 +52,13 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=font &gt; b</td>
+	<td>Wiadomość nie może być pusta</td>
+</tr>
+<tr>
 	<td>click</td>
-	<td>css=span.caret</td>
+	<td>link=asd asddd</td>
 	<td></td>
 </tr>
 <tr>
@@ -81,11 +66,7 @@
 	<td>link=Wyloguj</td>
 	<td></td>
 </tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
+
 </tbody></table>
 </body>
 </html>
