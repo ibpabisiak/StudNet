@@ -52,7 +52,10 @@ namespace Studnet.Controllers
                 }
                 if(preMessage != null)
                 {
-                    ViewBag.PreMessage = preMessage.Trim();
+                    string fullMessage = "\n\n\n";
+                    fullMessage += "------------CYTAT------------\n";
+                    fullMessage += preMessage.Trim();
+                    ViewBag.PreMessage = fullMessage;
                 }
                 return View();
             }

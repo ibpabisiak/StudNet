@@ -21,10 +21,10 @@ namespace Studnet.Models
 
         public DateTime message_date_created { get; set; }
 
+        public bool message_is_read { get; set; }
+
         public virtual users users { get; set; }
 
         public virtual users users1 { get; set; }
-
-        public bool message_is_read { get; set; }
     }
 }

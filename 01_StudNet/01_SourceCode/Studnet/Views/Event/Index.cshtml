@@ -81,7 +81,17 @@
                         {
                             <li>@Html.ActionLink("Forum", "Index", "Forum")</li>
                             <li>@Html.ActionLink("Kalendarz wydarzeń", "Index", "Event")</li>
-                            <li>@Html.ActionLink("Wiadomości", "Index", "Message")</li>
+                            string userMail = Session["User"].ToString();
+                            int userId = AppData.Instance().StudnetDatabase.users.Where(u => u.user_mail == userMail).Single().Id;
+                            int newMessages = AppData.Instance().StudnetDatabase.message.Where(m => m.message_user_to_id == userId).Count(m => m.message_is_read == false);
+                            if (newMessages > 0)
+                            {
+                                <li>@Html.ActionLink("Prywatne wiadomości (" + newMessages.ToString() + ")", "Index", "Message")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Prywatne wiadomości", "Index", "Message")</li>
+                            }
                         }
                     }
                 </ul>

@@ -8,8 +8,6 @@ namespace Studnet.Models
 
     public partial class forum_topic_category
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]

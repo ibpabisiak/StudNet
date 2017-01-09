@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -180,12 +181,14 @@
     </Compile>
     <Compile Include="App_Data\Database\StudnetDatabase.cs" />
     <Compile Include="App_Data\PasswordHasher.cs" />
+    <Compile Include="App_Data\Database\GroupManagement.cs" />
     <Compile Include="MessageManagement.cs" />
     <Compile Include="Models\event.cs" />
     <Compile Include="Models\Forum\forum.cs" />
     <Compile Include="Models\Forum\forum_topic.cs" />
     <Compile Include="Models\Forum\forum_topic_category.cs" />
     <Compile Include="Models\Forum\forum_topic_reply.cs" />
+    <Compile Include="Models\group.cs" />
     <Compile Include="Models\message.cs" />
     <Compile Include="Models\rank.cs" />
     <Compile Include="Models\users.cs" />
@@ -333,6 +336,9 @@
     <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Message\Create.cshtml" />
     <Content Include="Views\Message\Read.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Group\AddUserToGroup.cshtml" />
+    <Content Include="Views\Group\Add.cshtml" />
     <None Include="Views\User\VerifyMail.cshtml" />
   </ItemGroup>
   <ItemGroup />

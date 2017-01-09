@@ -8,8 +8,6 @@ namespace Studnet.Models
 
     public partial class forum_topic_reply
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Column(TypeName = "text")]
