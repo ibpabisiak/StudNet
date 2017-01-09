@@ -1,0 +1,2422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.failed {color: red; background-color: #ffcccc;}
+.passed {color: green; background-color: #ccffcc;}
+.done {color: #404040; background-color: #ccffcc;}
+.comment {color: #404040; background-color: #d0d0d0;}
+body, table { font-family: Verdana, Arial, sans-serif; font-size: 12pt; }
+table { border-collapse: collapse; border: 1px solid #ccc; }
+th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
+#suiteSummaryTable thead { font-size: 14pt; font-weight: 800; }
+.test_case thead { font-size: 14pt; font-weight: 400; }
+</style>
+</head>
+<body>
+<table id="suiteSummaryTable" class="selenium">
+<thead><tr class="failed"><td>Test Suite: Testy</td></tr></thead>
+<tbody>
+<tr><td>Test cases: 28 total / <span class="passed">27</span> passed / <span class="failed">1</span> failed</td></tr>
+<tr><td>Commands: 380 total / <span class="passed">379</span> passed / <span class="failed">1</span> failed / <span class="skipped">0</span> skipped</td></tr>
+</tbody></table><br>
+<table id="suiteTable" class="selenium">
+<thead><tr><td>Index of test cases</td></tr></thead>
+<tbody>
+<tr class="passed"><td><a href="#test0">TestRejestracji_01</a></td></tr>
+<tr class="passed"><td><a href="#test1">TestRejestracji_02</a></td></tr>
+<tr class="passed"><td><a href="#test2">TestRejestracji_03</a></td></tr>
+<tr class="passed"><td><a href="#test3">TestRejestracji_04</a></td></tr>
+<tr class="passed"><td><a href="#test4">TestRejestracji_05</a></td></tr>
+<tr class="passed"><td><a href="#test5">TestRejestracji_06</a></td></tr>
+<tr class="passed"><td><a href="#test6">TestRejestracji_07</a></td></tr>
+<tr class="passed"><td><a href="#test7">TestRejestracji_08</a></td></tr>
+<tr class="failed"><td><a href="#test8">TestRejestracji_09</a></td></tr>
+<tr class="done"><td><a href="#test9">TestLogowania_01</a></td></tr>
+<tr class="passed"><td><a href="#test10">TestLogowania_02</a></td></tr>
+<tr class="passed"><td><a href="#test11">TestLogowania_03</a></td></tr>
+<tr class="passed"><td><a href="#test12">TestForum_01</a></td></tr>
+<tr class="passed"><td><a href="#test13">TestForum_02</a></td></tr>
+<tr class="passed"><td><a href="#test14">TestForum_03</a></td></tr>
+<tr class="passed"><td><a href="#test15">TestZmianyHasła_01</a></td></tr>
+<tr class="passed"><td><a href="#test16">TestZmianyHasła_02</a></td></tr>
+<tr class="passed"><td><a href="#test17">TestZmianyHasła_03</a></td></tr>
+<tr class="done"><td><a href="#test18">TestKalendarza_01</a></td></tr>
+<tr class="passed"><td><a href="#test19">TestKalendarza_02</a></td></tr>
+<tr class="passed"><td><a href="#test20">TestKalendarza_03</a></td></tr>
+<tr class="passed"><td><a href="#test21">TestKalendarza_04</a></td></tr>
+<tr class="passed"><td><a href="#test22">TestWiadomosci_01</a></td></tr>
+<tr class="done"><td><a href="#test23">TestWiadomosci_02</a></td></tr>
+<tr class="passed"><td><a href="#test24">TestWiadomosci_03</a></td></tr>
+<tr class="passed"><td><a href="#test25">TestGrupy_01</a></td></tr>
+<tr class="passed"><td><a href="#test26">TestGrupy_02</a></td></tr>
+<tr class="passed"><td><a href="#test27">TestGrupy_03</a></td></tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test0"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_01</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td>Adam</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Kowalski</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test66@onet.eu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td>Szczecin</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Chopina</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>1234</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Zarejestrowano</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test1"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_02</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td>Jacek</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Pitupitu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test122@onet.eu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td>Opole</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Czysta</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>7</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>4321</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>1</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Zarejestrowano</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test2"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_03</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td>Ola</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Kwiat</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test182@onet.eu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td>Warszawa</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Stara</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>9</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>2252</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>4</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>6</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>12345611234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>12345611234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Zarejestrowano</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test3"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_04</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td>Adam</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Kowalski</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>6@6</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td>Szczecin</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Chopina</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>1234</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test4"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_05</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td>Adam</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Kowalski</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test13@onet.eu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td>Szczecin</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Chopina</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>1234</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>1234561@</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test5"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_06</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Kowalski</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test60@onet.eu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td>Szczecin</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Chopina</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>1234</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test6"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_07</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td>Ada</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Kowalski</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test600@onet.eu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td>Szczecin</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Chopina</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>1234</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>-2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test7"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_08</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td>Ada</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Kowalski</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test6000@onet.eu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Chopina</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>1234</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test8"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestRejestracji_09</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Rejestracja</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_name</td>
+	<td>Ada</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_surname</td>
+	<td>Kowalski</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>test677@onet.eu</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_city</td>
+	<td>S</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_street</td>
+	<td>Chopina</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_address_home_number</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_index</td>
+	<td>1234</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_study_year</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_semester</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password_repeat</td>
+	<td>1234561@#aA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="failed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Register new user</td>
+	<td>Actual value 'Zarejestrowano' did not match 'Register new user'</td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test9"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestLogowania_01</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=span.caret</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test10"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestLogowania_02</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Podane hasło jest nieprawidłowe</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test11"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestLogowania_03</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd1111</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Podany adres email nie znajduje się w bazie</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test12"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestForum_01</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Forum</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dodaj temat</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=forum_topic_title</td>
+	<td>Testowa nazwa6</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=forum_topic_reply_content</td>
+	<td>testowa treść</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>name=forum_topic_category_id</td>
+	<td>label=Aktualnosci</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Forum glówne - Testowa nazwa6</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=forum_topic_reply_content</td>
+	<td>Testowa odpowiedz</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>//tr[6]/td</td>
+	<td>Testowa odpowiedz</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=&lt;- Powrót</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=span.caret</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test13"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestForum_02</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Forum</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dodaj temat</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=forum_topic_title</td>
+	<td>Testowa nazwa6</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=forum_topic_reply_content</td>
+	<td>testowa treść</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>name=forum_topic_category_id</td>
+	<td>label=Aktualnosci</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Temat o podanej nazwie już istnieje!</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=span.caret</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test14"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestForum_03</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Forum</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dodaj temat</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=forum_topic_title</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=forum_topic_reply_content</td>
+	<td>testowa treść</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>name=forum_topic_category_id</td>
+	<td>label=Aktualnosci</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Nazwa tematu musi zawierać co najmniej dwa znaki</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=span.caret</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test15"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestZmianyHasła_01</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Zmień hasło</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=oldPassword</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=newPassword</td>
+	<td>123456asdA1</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=newPasswordRepeat</td>
+	<td>123456asdA1</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>Hasło zostało zmienione.</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Zmień hasło</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=oldPassword</td>
+	<td>123456asdA1</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=newPassword</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=newPasswordRepeat</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>Hasło zostało zmienione.</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test16"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestZmianyHasła_02</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Zmień hasło</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=oldPassword</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=newPassword</td>
+	<td>123456asA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=newPasswordRepeat</td>
+	<td>123456asdA1</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Nowe hasła nie zgadzają się ze sobą</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=span.caret</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test17"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestZmianyHasła_03</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Zmień hasło</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=oldPassword</td>
+	<td>123456asA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=newPassword</td>
+	<td>123456asdA1</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=newPasswordRepeat</td>
+	<td>123456asdA1</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Podano błędne obecne hasło użytkownika</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test18"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestKalendarza_01</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Kalendarz wydarzeń</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>open</td>
+	<td>/Event/AddEvent?dateClicked=2016-12-15</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_title</td>
+	<td>testowy tyt</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_description</td>
+	<td>testowy opis</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_start</td>
+	<td>2016-11-28T23:25</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_end</td>
+	<td>2016-11-29T00:29</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=span.caret</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test19"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestKalendarza_02</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Kalendarz wydarzeń</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>open</td>
+	<td>/Event/AddEvent?dateClicked=2016-12-15</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_title</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_description</td>
+	<td>testowy opis</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_start</td>
+	<td>2016-11-28T23:25</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_end</td>
+	<td>2016-11-29T00:29</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Tytuł wydarzenia musi zawierać co najmniej 3 znaki</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test20"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestKalendarza_03</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Kalendarz wydarzeń</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>open</td>
+	<td>/Event/AddEvent?dateClicked=2016-12-15</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_title</td>
+	<td>testowy tyt</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_description</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_start</td>
+	<td>2016-11-28T23:25</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_end</td>
+	<td>2016-11-29T00:29</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Opis wydarzenia musi zawierać co najmniej 3 znaki</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test21"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestKalendarza_04</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Kalendarz wydarzeń</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>open</td>
+	<td>/Event/AddEvent?dateClicked=2016-12-15</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_title</td>
+	<td>testowy tyt</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_description</td>
+	<td>testowy opis</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_start</td>
+	<td>2016-11-28T23:25</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=event_end</td>
+	<td>2016-11-27T00:29</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=b</td>
+	<td>Wydarzenie nie może mieć zerowego ani ujemnego czasu trwania</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test22"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestWiadomosci_01</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Prywatne wiadomości</td>
+	<td></td>
+	<td>Element link=Wiadomości not found</td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Utwórz wiadomość</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>name=message_user_to_id</td>
+	<td>label=Konto Testowe</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=message_text</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wiadomosc testowa</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>Konto Testowe</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test23"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestWiadomosci_02</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Prywatne wiadomości</td>
+	<td></td>
+	<td>Element link=Wiadomości not found</td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=td</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=message_text</td>
+	<td>moja odp</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test24"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestWiadomosci_03</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Prywatne wiadomości</td>
+	<td></td>
+	<td>Element link=Wiadomości not found</td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=td</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>css=font &gt; b</td>
+	<td>Wiadomość nie może być pusta</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test25"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestGrupy_01</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Zarządzanie grupami</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dodaj grupę</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=group_name</td>
+	<td>Testowa</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>//h4[4]</td>
+	<td>Testowa</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=asd asddd</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test26"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestGrupy_02</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Zarządzanie grupami</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Dodaj użytkownika do grupy')])[4]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@name='user'])[4]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyText</td>
+	<td>//table[4]/tbody/tr[2]/td</td>
+	<td>asd asddd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=span.caret</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test27"></a><table class="test_case"><thead><tr><td colspan="4">Test case: TestGrupy_03</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Logowanie</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_mail</td>
+	<td>asd321@a11.asd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=user_password</td>
+	<td>123456asdA</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Zarządzanie grupami</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Usuń z grupy')])[6]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>verifyNotText</td>
+	<td>//table[4]/tbody/tr[2]/td</td>
+	<td>asd asddd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=span.caret</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Wyloguj</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+</body></html>

@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:29489/" />
-<title>TestWiadomosci_01</title>
+<title>TestGrupy_03</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">TestWiadomosci_01</td></tr>
+<tr><td rowspan="1" colspan="3">TestGrupy_03</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -38,37 +38,22 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Prywatne wiadomości</td>
+	<td>link=Zarządzanie grupami</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Utwórz wiadomość</td>
+	<td>xpath=(//a[contains(text(),'Usuń z grupy')])[6]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>select</td>
-	<td>name=message_user_to_id</td>
-	<td>label=Konto Testowe</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=message_text</td>
-	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wiadomosc testowa</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=input.btn.btn-default</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=td</td>
-	<td>Konto Testowe</td>
+	<td>verifyNotText</td>
+	<td>//table[4]/tbody/tr[2]/td</td>
+	<td>asd asddd</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=asd asddd</td>
+	<td>css=span.caret</td>
 	<td></td>
 </tr>
 <tr>
@@ -76,6 +61,7 @@
 	<td>link=Wyloguj</td>
 	<td></td>
 </tr>
+
 </tbody></table>
 </body>
 </html>
