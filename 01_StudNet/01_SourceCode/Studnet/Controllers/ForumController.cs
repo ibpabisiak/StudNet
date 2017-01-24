@@ -68,7 +68,15 @@ namespace Studnet.Controllers
             {
                 if ((bool)Session["IsLogged"])
                 {
-                    return View("Thread", AppData.Instance().StudnetDatabase.forum_topic.Where(m => m.Id == thread_id).Single());
+                    var selectedThread = AppData.Instance().StudnetDatabase.forum_topic.Where(m => m.Id == thread_id).Single();
+                    if (Session["Rank"].ToString().ToLower().Contains("admin") || selectedThread.group.group_name == Session["Group"].ToString())
+                    {
+                        return View("Thread", AppData.Instance().StudnetDatabase.forum_topic.Where(m => m.Id == thread_id).Single());
+                    }
+                    else
+                    {
+                        throw new Exception("No permissions to see this thread");
+                    }
                 }
                 return RedirectToAction("Login", "User");
             }
@@ -196,7 +204,7 @@ namespace Studnet.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddThread(int forum_id, forum_topic forumTopic, forum_topic_reply threadPost)
+        public ActionResult AddThread(int group_id,int forum_id, forum_topic forumTopic, forum_topic_reply threadPost)
         {
             forum threadForum = AppData.Instance().StudnetDatabase.forum.Where(m => m.Id == forum_id).Single();
             if (AppData.Instance().StudnetDatabase.ForumManagement.CheckIfThreadExists(threadForum, forumTopic.forum_topic_title))
@@ -227,6 +235,10 @@ namespace Studnet.Controllers
             {
                 try
                 {
+                    if(group_id != -1)
+                    {
+                        forumTopic.group = AppData.Instance().StudnetDatabase.group.Where(m=>m.Id == group_id).Single();
+                    }
                     AppData.Instance().StudnetDatabase.ForumManagement.AddThread(threadForum, forumTopic, threadPost, Session["User"].ToString());
                 }
                 catch(Exception ex)

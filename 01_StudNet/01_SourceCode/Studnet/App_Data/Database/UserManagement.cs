@@ -12,6 +12,12 @@ namespace Studnet
 {
     public class UserManagement
     {
+        public enum Rank
+        {
+            User,
+            Admin
+        }
+
         private DbSet<users> users;
         private PasswordHasher passwordHasher = new PasswordHasher();
 
@@ -41,6 +47,27 @@ namespace Studnet
                 }
             }
             catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void SetUserRank(users user, Rank newRank)
+        {
+            try
+            {
+                switch (newRank)
+                {
+                    case Rank.Admin:
+                        user.rank = AppData.Instance().StudnetDatabase.rank.Where(m => m.rank_name.ToLower() == "admin").Single();
+                        break;
+                    case Rank.User:
+                        user.rank = AppData.Instance().StudnetDatabase.rank.Where(m => m.rank_name.ToLower() == "user").Single();
+                        break;
+                }
+                AppData.Instance().StudnetDatabase.UpdateTableEntry(StudnetDatabase.TableType.Users, user);
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }

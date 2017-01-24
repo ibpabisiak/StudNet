@@ -29,6 +29,39 @@ namespace Studnet
             }
         }
 
+        public void RemoveGroup(group groupToRemove)
+        {
+            try
+            {
+                if (groupToRemove != null)
+                {
+                    Exception userRemovingException = new Exception("Error occured while removing group");
+                    List<users> users = new List<users>();
+                    users.AddRange(groupToRemove.users);
+                    foreach (var user in users)
+                    {
+                        try
+                        {
+                            RemoveUserFromGroup(user, groupToRemove);
+                        }
+                        catch (Exception ex)
+                        {
+                            userRemovingException = ex;
+                        }
+                    }
+                    if (groupToRemove.users.Count != 0)
+                    {
+                        throw userRemovingException;
+                    }
+                    AppData.Instance().StudnetDatabase.RemoveRecordFromTable(StudnetDatabase.TableType.Group, groupToRemove);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void AddGroup(group newGroup)
         {
             try

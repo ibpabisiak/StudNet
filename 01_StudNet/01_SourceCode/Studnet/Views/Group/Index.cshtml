@@ -11,23 +11,7 @@
 }
 @Html.ActionLink("Dodaj grupę", "Add", "Group")
 <h3>Grupy:</h3>
-@foreach(var group in Model)
+@foreach (var group in Model)
 {
-    <h4>@group.group_name</h4>
-    @Html.ActionLink("Dodaj użytkownika do grupy", "AddUserToGroup", "Group", new { groupId = group.Id}, null)
-    <table>
-        <tr>
-            <th scope="col">Imię i nazwisko</th>
-            <th scope="col" style="padding: 0 15px">Numer albumu</th>
-         </tr>
-            @foreach (var user in group.users)
-            {
-                <tr>
-                    <td>@user.GetFullName()</td>
-                    <td style="padding: 0 15px">@user.user_index.ToString()</td>
-                    <td>@Html.ActionLink("Usuń z grupy", "RemoveUser", "Group", new { userId = user.Id, groupId = group.Id }, null)</td>
-                </tr>
-            }
-
-    </table>
+    <h4>@Html.ActionLink(group.group_name, "SeeGroup", "Group", new { groupId = group.Id }, null)  @Html.ActionLink("Usuń", "RemoveGroup", "Group", new { groupId = group.Id }, new { onclick = "return confirm('Czy na pewno chcesz usunąć tą grupę?');" })</h4>
 }

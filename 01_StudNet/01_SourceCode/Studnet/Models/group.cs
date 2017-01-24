@@ -12,6 +12,7 @@ namespace Studnet.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public group()
         {
+            forum_topic = new HashSet<forum_topic>();
             users = new HashSet<users>();
         }
 
@@ -20,6 +21,9 @@ namespace Studnet.Models
         [Required]
         [StringLength(50)]
         public string group_name { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<forum_topic> forum_topic { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<users> users { get; set; }

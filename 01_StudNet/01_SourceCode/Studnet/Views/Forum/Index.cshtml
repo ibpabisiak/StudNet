@@ -35,6 +35,8 @@
             </tr>
             @{ foreach (var topic in categoryTopics)
                 {
+                    if (Session["Rank"].ToString().ToLower().Contains("admin") || (Session["Group"] != null && Session["Group"].ToString() == topic.group.group_name))
+                    {
                     <tr>
                         <td style="padding: 10px 0">@Html.ActionLink(topic.forum_topic_title, "SeeThread", "Forum", new { thread_id = topic.Id }, null)</td>
                         <td style="padding: 10px 0">@topic.users.GetFullName()</td>
@@ -51,10 +53,11 @@
                             }
                         }
                     </tr>
+                                    }
+                                }
                             }
-             }
 
-                            
+
         </table>
                                     }
                                 }

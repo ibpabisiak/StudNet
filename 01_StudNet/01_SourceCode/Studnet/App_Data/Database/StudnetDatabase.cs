@@ -341,10 +341,14 @@ namespace Studnet.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<group>()
+                .HasMany(e => e.forum_topic)
+                .WithOptional(e => e.group)
+                .HasForeignKey(e => e.forum_topic_group_id);
+
+            modelBuilder.Entity<group>()
                 .HasMany(e => e.users)
-                .WithRequired(e => e.group)
-                .HasForeignKey(e => e.user_group_id)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.group)
+                .HasForeignKey(e => e.user_group_id);
 
             modelBuilder.Entity<message>()
                 .Property(e => e.message_text)
