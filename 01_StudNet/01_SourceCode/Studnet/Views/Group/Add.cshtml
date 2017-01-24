@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Dodaj grupę";
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("<- Powrót", "Index", "Group")
+<form method="post">
+    @{
+        if (ViewBag.Error != null)
+        {
+            <font color="red"><b>@ViewBag.Error</b></font>
+        }
+    }
+    <div class="form-group">
+        <label for="group_name">Nazwa grupy:</label>
+        <input type="text" name="group_name"/>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Dodaj grupę" />
+    </div>
+</form>

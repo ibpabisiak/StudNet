@@ -1,0 +1,29 @@
+﻿@model List<Studnet.Models.users>
+@{
+    ViewBag.Title = "Dodaj użytkownika do grupy " + ViewBag.GroupName;
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("<- Powrót", "Index", "Group")
+<form method="post">
+    @{
+        if (ViewBag.Error != null)
+        {
+            <font color="red"><b>@ViewBag.Error</b></font>
+        }
+    }
+    <input type="hidden" name="group_id" value="@ViewBag.Group" />
+    <div class="form-group">
+        <label for="user">Wybierz użytkowników do dodania do grupy:</label>
+        <br />
+        @foreach (var user in Model)
+        {
+            <input type="checkbox" name="user" value="@user.user_mail"/>@:@user.GetFullName()
+            @:(@user.user_mail)
+            <br />
+        }
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Dodaj użytkowników" />
+    </div>
+</form>

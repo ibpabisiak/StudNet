@@ -1,0 +1,23 @@
+﻿@model Studnet.Models.group
+@{
+    ViewBag.Title = "Grupa " + Model.group_name;
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("<-Powrót","Index","Group")
+<table>
+    <tr>
+        <th scope="col">Imię i nazwisko</th>
+        <th scope="col" style="padding: 0 15px">Numer albumu</th>
+    </tr>
+    @foreach (var user in Model.users)
+    {
+        <tr>
+            <td>@user.GetFullName()</td>
+            <td style="padding: 0 15px">@user.user_index.ToString()</td>
+            <td>@Html.ActionLink("Usuń z grupy", "RemoveUser", "Group", new { userId = user.Id, groupId = Model.Id }, null)</td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Dodaj użytkownika", "AddUserToGroup", "Group", new { groupId = Model.Id }, null)

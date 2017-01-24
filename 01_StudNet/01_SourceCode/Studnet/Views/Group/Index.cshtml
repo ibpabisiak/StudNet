@@ -1,0 +1,17 @@
+﻿@model List<Studnet.Models.group>
+@{
+    ViewBag.Title = "Zarządzanie grupami";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (ViewBag.Error != null)
+{
+    <font color="red"><b>@ViewBag.Error</b></font>
+}
+@Html.ActionLink("Dodaj grupę", "Add", "Group")
+<h3>Grupy:</h3>
+@foreach (var group in Model)
+{
+    <h4>@Html.ActionLink(group.group_name, "SeeGroup", "Group", new { groupId = group.Id }, null)  @Html.ActionLink("Usuń", "RemoveGroup", "Group", new { groupId = group.Id }, new { onclick = "return confirm('Czy na pewno chcesz usunąć tą grupę?');" })</h4>
+}

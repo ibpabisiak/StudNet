@@ -13,8 +13,7 @@ namespace Studnet.Models
         {
             forum_topic_reply = new HashSet<forum_topic_reply>();
         }
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int Id { get; set; }
 
         [Required]
@@ -30,7 +29,11 @@ namespace Studnet.Models
 
         public int forum_topic_category_id { get; set; }
 
+        public int? forum_topic_group_id { get; set; }
+
         public virtual forum forum { get; set; }
+
+        public virtual group group { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<forum_topic_reply> forum_topic_reply { get; set; }

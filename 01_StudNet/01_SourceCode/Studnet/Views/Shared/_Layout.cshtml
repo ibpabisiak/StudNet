@@ -37,11 +37,15 @@
                             int newMessages = AppData.Instance().StudnetDatabase.message.Where(m => m.message_user_to_id == userId).Count(m => m.message_is_read == false);
                             if (newMessages > 0)
                             {
-                            <li>@Html.ActionLink("Wiadomości (" + newMessages.ToString() + ")", "Index", "Message")</li>
+                            <li>@Html.ActionLink("Prywatne wiadomości (" + newMessages.ToString() + ")", "Index", "Message")</li>
                             }
                             else
                             {
-                                <li>@Html.ActionLink("Wiadomości", "Index", "Message")</li>
+                                <li>@Html.ActionLink("Prywatne wiadomości", "Index", "Message")</li>
+                            }
+                            if (Session["Rank"].ToString().ToLower().Contains("admin"))
+                            {
+                                <li>@Html.ActionLink("Zarządzanie grupami", "Index", "Group")</li>
                             }
                         }
                     }

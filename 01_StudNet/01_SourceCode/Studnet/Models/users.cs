@@ -53,11 +53,15 @@ namespace Studnet.Models
 
         public int user_rank_id { get; set; }
 
+        public int? user_group_id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<forum_topic> forum_topic { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<forum_topic_reply> forum_topic_reply { get; set; }
+
+        public virtual group group { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<message> message { get; set; }

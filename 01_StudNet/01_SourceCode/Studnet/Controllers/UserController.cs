@@ -358,6 +358,10 @@ namespace Studnet.Controllers.User
                 Session.Add("User", loggedUser.user_mail);
                 Session.Add("Username", loggedUser.GetFullName());
                 Session.Add("Rank", loggedUser.rank.rank_name);
+                if (loggedUser.group != null)
+                {
+                    Session.Add("Group", loggedUser.group.group_name);
+                }
                 return RedirectToAction("Index", "MainPage");
             }
             catch (Exception ex)
